@@ -9,7 +9,7 @@ const Information = () => {
     } = useInformation()
 
     const { user } = useContext(userContext)
-    console.log(user)
+    
     return (
         <div className="">
             <h1 className="text-xl font-semibold font-Archivo pb-4 pl-4">Information</h1>

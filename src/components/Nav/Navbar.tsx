@@ -6,6 +6,7 @@ import useIsComponentVisibleOnClick from "../../hooks/useIsComponentVisibleOnCli
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { userContext } from "../../Contexts/userContext";
+import Cart from "../../pages/Cart/Cart";
 
 interface PropsType {
     isDropDownVisible: boolean
@@ -33,7 +34,7 @@ const DropDown = ( {isDropDownVisible, setIsDropDownVisible}: PropsType) => {
 
 const Navbar = () => {
 
-    const { ref: sideBarRef, isComponentsVisible: isSideBarVisible, setIsComponentVisible: setIsSideBarVisible } = useIsComponentVisibleOnClick(false)
+    const { ref: sideBarRef, isComponentsVisible: isSideBarVisible, setIsComponentVisible: setIsSideBarVisible } = useIsComponentVisibleOnClick(true)
     const { ref: dropDownRef, isComponentsVisible: isDropDownVisible, setIsComponentVisible: setIsDropDownVisible } = useIsComponentVisibleOnClick(false)
 
     const { user } = useContext(userContext)
@@ -78,7 +79,9 @@ const Navbar = () => {
                     {isSideBarVisible && <div onClick={() => setIsSideBarVisible(false)} className="fixed top-0 left-0 z-10 h-full w-full bg-black bg-opacity-25"></div>}
                     <div ref={sideBarRef}>
                         <PiShoppingCartSimpleBold onClick={() => setIsSideBarVisible(true)} className="cursor-pointer text-indigo-900" size={22} />
-                        <SideBar isVisible={isSideBarVisible} setIsComponentVisible={setIsSideBarVisible} />
+                        <SideBar isSideBarVisible={isSideBarVisible}>
+                            <Cart setIsSideBarVisible={setIsSideBarVisible} />
+                        </SideBar>
                     </div>
                 </div>
             </div>

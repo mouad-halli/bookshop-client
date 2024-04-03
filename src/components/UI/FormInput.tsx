@@ -6,7 +6,7 @@ interface IFormInput {
     label: string,
     disabled?: boolean
     errorMsg?: string
-    register?: RegisterReturn
+    register?: UseFormRegisterReturn
 }
 
 const FormInput = ( {inputType, label, disabled = false, errorMsg='', register}: IFormInput) => {
