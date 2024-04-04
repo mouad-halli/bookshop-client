@@ -13,10 +13,13 @@ const Loading = () => {
 }
 
 interface Propstype {
-    setIsSideBarVisible: React.Dispatch<React.SetStateAction<boolean>>
+    setIsSideBarVisible?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const Cart = ({setIsSideBarVisible}: Propstype) => {
+const Cart = ({ setIsSideBarVisible }: Propstype) => {
+
+    if (!setIsSideBarVisible)
+        return null
 
     const [isCheckout, setIsCheckout] = useState(false)
 
