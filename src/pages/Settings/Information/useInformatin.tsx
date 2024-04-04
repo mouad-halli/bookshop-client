@@ -4,8 +4,9 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { IUpdateInformationSchema, IUpdatePasswordSchema, UpdateInformationSchema, UpdatePasswordSchema } from "../../../schema/userInformation"
 import { userContext } from "../../../Contexts/userContext"
 import { useContext } from "react"
-import { updateUserInformation } from "../../../services/api/user"
+import { updateUserInformation, updateUserPassword } from "../../../services/api/user"
 import { userType } from "../../../@Types/user"
+import { isAxiosError } from "axios"
 
 
 const useInformation = () => {
@@ -39,29 +40,45 @@ const useInformation = () => {
             data[key as keyof typeof data] = objectData[key]
         }
 
-        console.log(data)
-
         try {
             const updatedData = await updateUserInformation(data)
             handleUpdateUser(updatedData)
             // forms.information.reset()
 
         } catch (error) {
-            console.log(error)
+            if (isAxiosError(error) && error.response) {
+                const errorMsg = error.response.data.message
+                console.log(errorMsg)
+                const [, field, fieldErrorMsg] = errorMsg.split('"')
+                if (field)
+                    forms.information.setError(field, {message: fieldErrorMsg})
+                else 
+                    forms.information.setError("root", {message: errorMsg})
+            }
+            else
+                console.log(error)
+            forms.information.reset({} ,{keepErrors: true})
         }
     }
 
     const onPasswordFormSubmit = async (objectData: FieldValues) => {
 
-        // objectData = turnEmptyObjectValuesToUndefined(objectData)
-
         try {
-
-            // await updateUser(objectData)
-            console.log(objectData)
+            await updateUserPassword(objectData)
 
         } catch (error) {
-            console.log(error)
+            if (isAxiosError(error) && error.response) {
+                const errorMsg = error.response.data.message
+                console.log(errorMsg.split('"'))
+                const [, field, fieldErrorMsg] = errorMsg.split('"')
+                if (field)
+                    forms.password.setError(field, {message: fieldErrorMsg})
+                else 
+                    forms.password.setError("root", {message: errorMsg})
+            }
+            else
+                console.log(error)
+            forms.password.reset({} ,{keepErrors: true})
         }
     }
 

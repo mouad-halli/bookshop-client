@@ -28,10 +28,9 @@ const useLogin = () => {
         } catch (error: unknown) {
             if (isAxiosError(error) && error.response) {
                 const errorMsg = error.response.data.message
-                console.log(errorMsg)
-                const [, field] = errorMsg.split('"')
+                const [, field, fieldErrorMsg] = errorMsg.split('"')
                 if (field)
-                    setError(field, {message: errorMsg})
+                    setError(field, {message: fieldErrorMsg})
                 else 
                    setError("root", {message: errorMsg})
             }

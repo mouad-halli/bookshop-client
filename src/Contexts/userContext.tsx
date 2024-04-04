@@ -6,6 +6,7 @@ import { getUser } from "../services/api/user";
 type userContextType = {
     user: userType | null | undefined
     handleUpdateUser: (newUserData: userType) => void
+    handleLogout: () => void
 }
 
 export const userContext = createContext<userContextType>({} as userContextType)
@@ -23,7 +24,11 @@ export const UserContextProvider = ( {children}:userProviderProps ) => {
         setUser({...newUserData})
     }
 
-    const value = useMemo(() => ({user, handleUpdateUser}), [user])
+    const handleLogout = () => {
+        setUser(null)
+    }
+
+    const value = useMemo(() => ({user, handleUpdateUser, handleLogout}), [user])
 
     useEffect(() => {
         const fetchUserData = async () => {

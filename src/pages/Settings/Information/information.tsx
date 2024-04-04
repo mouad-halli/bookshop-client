@@ -9,7 +9,10 @@ const Information = () => {
     } = useInformation()
 
     const { user } = useContext(userContext)
-    
+
+    const informationFormErrors = forms.information.formState.errors
+    const passwordFormErrors = forms.password.formState.errors
+
     return (
         <div className="">
             <h1 className="text-xl font-semibold font-Archivo pb-4 pl-4">Information</h1>
@@ -17,8 +20,8 @@ const Information = () => {
                 <form onSubmit={forms.information.handleSubmit(onInformationFormSubmit)} className="flex flex-col gap-y-1">
                     <div className="flex gap-x-1 items-center truncate">
                         <span className="text-gray-500">Firstname</span>
-                        {forms.information.formState.errors.firstname &&
-                            <span className="text-red-500 text-xs">{`(${forms.information.formState.errors.firstname.message})`}</span>
+                        {informationFormErrors.firstname &&
+                            <span className="text-red-500 text-xs">{`(${informationFormErrors.firstname.message})`}</span>
                         }
                     </div>
                     <input
@@ -27,8 +30,8 @@ const Information = () => {
                     />
                     <div className="flex gap-x-1 items-center truncate pt-3">
                         <span className="text-gray-500">Lastname</span>
-                        {forms.information.formState.errors.lastname &&
-                            <span className="text-red-500 text-xs">{`(${forms.information.formState.errors.lastname.message})`}</span>
+                        {informationFormErrors.lastname &&
+                            <span className="text-red-500 text-xs">{`(${informationFormErrors.lastname.message})`}</span>
                         }
                     </div>
                     <input
@@ -37,8 +40,8 @@ const Information = () => {
                     />
                     <div className="flex gap-x-1 items-center truncate pt-3">
                         <span className="text-gray-500">Email</span>
-                        {forms.information.formState.errors.email &&
-                            <span className="text-red-500 text-xs">{`(${forms.information.formState.errors.email.message})`}</span>
+                        {informationFormErrors.email &&
+                            <span className="text-red-500 text-xs">{`(${informationFormErrors.email.message})`}</span>
                         }
                     </div>
                     <input
@@ -49,7 +52,7 @@ const Information = () => {
                         type="submit" disabled={ !forms.information.formState.isDirty || forms.information.formState.isSubmitting}
                         className="py-2.5 border md:w-min px-8 mt-4 border-indigo-600 text-indigo-700"
                     >
-                        Save
+                        {forms.information.formState.isSubmitting ? "saving ..." : "save"}
                     </button>
                 </form>
                 <div className="flex flex-col gap-y-2">
@@ -60,8 +63,8 @@ const Information = () => {
                                 placeholder="Current password" type="password" className="w-full border outline-none py-2 px-4"
                                 {...forms.password.register("currentPassword")}
                             />
-                            {forms.password.formState.errors.currentPassword &&
-                                <span className="text-red-500 text-xs absolute left-0 -bottom-5">{`(${forms.password.formState.errors.currentPassword.message})`}</span>
+                            {passwordFormErrors.currentPassword &&
+                                <span className="text-red-500 text-xs absolute left-0 -bottom-5">{`(${passwordFormErrors.currentPassword.message})`}</span>
                             }
                         </div>
                         <div className="relative ">
@@ -69,8 +72,8 @@ const Information = () => {
                                 placeholder="New password" type="password" className="w-full border outline-none py-2 px-4" 
                                 {...forms.password.register("newPassword")}
                             />
-                            {forms.password.formState.errors.newPassword &&
-                                <span className="text-red-500 text-xs absolute left-0 -bottom-5">{`(${forms.password.formState.errors.newPassword.message})`}</span>
+                            {passwordFormErrors.newPassword &&
+                                <span className="text-red-500 text-xs absolute left-0 -bottom-5">{`(${passwordFormErrors.newPassword.message})`}</span>
                             }
                         </div>
                         <div className="relative ">
@@ -78,17 +81,17 @@ const Information = () => {
                                 placeholder="Confirm new password" type="password" className="w-full border outline-none py-2 px-4"
                                 {...forms.password.register("passwordConfirmation")}
                             />
-                            {forms.password.formState.errors.passwordConfirmation &&
-                                <span className="text-red-500 text-xs absolute left-0 -bottom-5">{`(${forms.password.formState.errors.passwordConfirmation.message})`}</span>
+                            {passwordFormErrors.passwordConfirmation &&
+                                <span className="text-red-500 text-xs absolute left-0 -bottom-5">{`(${passwordFormErrors.passwordConfirmation.message})`}</span>
                             }
                         </div>
+                        <button
+                            type="submit" disabled={ !forms.password.formState.isDirty || !forms.password.formState.isValid || forms.password.formState.isSubmitting}
+                            className="py-2.5 border mt-4 border-indigo-600 text-indigo-700"
+                        >
+                            Change password
+                        </button>
                     </form>
-                    <button
-                        type="submit" disabled={ !forms.password.formState.isDirty || !forms.password.formState.isValid || forms.password.formState.isSubmitting}
-                        className="py-2.5 border mt-4 border-indigo-600 text-indigo-700"
-                    >
-                        Change password
-                    </button>
                 </div>
             </div>
         </div>

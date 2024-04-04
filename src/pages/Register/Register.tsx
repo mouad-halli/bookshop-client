@@ -14,24 +14,24 @@ const Register = () => {
             <form onSubmit={handleSubmit(onSubmit)} className="w-[29rem] flex flex-col gap-y-6">
                 <h1 className="text-center text-5xl mb-5 font-Archivo">Create account</h1>
                 <FormInput
-                    label="firstname" inputType="text" errorMsg={errors.firstname?.message}
+                    label="firstname" inputType="text" errorMsg={errors.root ? errors.root.message : errors.firstname?.message}
                     register={register("firstname")}
                 />
                 <FormInput
-                    label="lastname" inputType="text" errorMsg={errors.lastname?.message}
+                    label="lastname" inputType="text" errorMsg={errors.root ? errors.root.message : errors.lastname?.message}
                     register={register("lastname")}
                 />
                 <FormInput
-                    label="email" inputType="email" errorMsg={errors.email?.message}
+                    label="email" inputType="email" errorMsg={errors.root ? errors.root.message : errors.email?.message}
                     register={register("email")}
                 />
                 <div className="w-full flex gap-x-2">
                     <FormInput
-                        label="password" inputType="password" errorMsg={errors.password?.message}
+                        label="password" inputType="password" errorMsg={errors.root ? errors.root.message : errors.password?.message}
                         register={register("password")}
                     />
                     <FormInput
-                        label="confirm password" inputType="password" errorMsg={errors.passwordConfirmation?.message}
+                        label="confirm password" inputType="password" errorMsg={errors.root ? errors.root.message : errors.passwordConfirmation?.message}
                         register={register("passwordConfirmation")}
                     />
                 </div>

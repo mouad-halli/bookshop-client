@@ -23,12 +23,16 @@ const useRegister = () => {
             navigate('/login')
         } catch (error) {
             if (isAxiosError(error) && error.response) {
-                const [, field, msg] = error.response.data.message.split('"')
-                setError(field, { message: msg })
-                console.log(error.response.data)
+                const errorMsg = error.response.data.message
+                const [, field, fieldErrorMsg] = errorMsg.split('"')
+                if (field)
+                    setError(field, {message: fieldErrorMsg})
+                else 
+                   setError("root", {message: errorMsg})
             }
             else
                 console.log(error)
+            reset({} ,{keepErrors: true})
         }
     }
 
