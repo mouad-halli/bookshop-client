@@ -6,5 +6,14 @@ export interface userType {
     isSeller: boolean
 }
 
+export interface userAddress {
+    address1: string,
+    address2: string,
+    country: string,
+    city: string,
+    zipCode: string
+}
+
+
 // export interface updateUserType extends Partial<Omit<userType, 'imgUrl'> & {password: string}> {}
 // export interface userDto extends userType { _id: string }

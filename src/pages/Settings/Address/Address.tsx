@@ -11,19 +11,19 @@ const Address = () => {
             <h1 className="text-xl font-semibold font-Archivo pb-4 pl-4">Address</h1>
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-1 border p-5">
                 <div className="flex gap-x-1 items-center truncate">
-                    <span className="text-gray-500">Street 1</span>
-                    {errors.street1 && <span className="text-red-500 text-xs">{`(${errors.street1.message})`}</span>}
+                    <span className="text-gray-500">Address 1</span>
+                    {errors.address1 && <span className="text-red-500 text-xs">{`(${errors.address1.message})`}</span>}
                 </div>
                 <input
-                    type="text" {...register("street1")}
+                    type="text" {...register("address1")}
                     className="border outline-none py-1.5 px-4"
                 />
                 <div className="flex gap-x-1 items-center truncate pt-3">
-                    <span className="text-gray-500">Street 2</span>
-                    {errors.street2 && <span className="text-red-500 text-xs">{`(${errors.street2.message})`}</span>}
+                    <span className="text-gray-500">Address 2</span>
+                    {errors.address2 && <span className="text-red-500 text-xs">{`(${errors.address2.message})`}</span>}
                 </div>
                 <input
-                    type="text" {...register("street2")}
+                    type="text" {...register("address2")}
                     className="border outline-none py-1.5 px-4"
                 />
                 <div className="flex gap-x-1 items-center truncate pt-3">
@@ -51,7 +51,7 @@ const Address = () => {
                             {errors.zipCode && <span className="text-red-500 text-xs">{`(${errors.zipCode.message})`}</span>}
                         </div>
                         <input
-                            type="text" {...register("zipCode", { valueAsNumber: true })}
+                            type="text" {...register("zipCode"/*, { valueAsNumber: true }*/)}
                             className=" w-full border outline-none py-1.5 px-4"
                         />
                     </div>
@@ -60,7 +60,7 @@ const Address = () => {
                     type="submit" disabled={ !isDirty || !isValid || isSubmitting}
                     className="py-2.5 border md:w-min px-8 mt-4 border-indigo-600 text-indigo-700"
                 >
-                    Save
+                    {isSubmitting ? 'Saving...' : 'Save'}
                 </button>
             </form>
         </div>   
