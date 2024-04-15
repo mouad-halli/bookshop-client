@@ -50,8 +50,8 @@ const DropDown = () => {
     const navigate = useNavigate()
 
     return (
-        <div ref={dropDownRef} className="relative">
-        <PiUserCircleBold onClick={() => user ? setIsDropDownVisible(!isDropDownVisible) : navigate('/login')} className="cursor-pointer text-indigo-900" size={23} />
+        <div ref={dropDownRef} className="relative z-10">
+            <PiUserCircleBold onClick={() => user ? setIsDropDownVisible(!isDropDownVisible) : navigate('/login')} className="cursor-pointer text-indigo-900" size={23} />
             <DropDownMenu isDropDownVisible={isDropDownVisible} setIsDropDownVisible={setIsDropDownVisible} />
         </div>
     )

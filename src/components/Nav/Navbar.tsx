@@ -39,7 +39,7 @@ const Navbar = () => {
                         type="text" placeholder="Search books, authors, genres"
                     />
                 </div>
-                <div className="flex items-center gap-x-5">
+                <div className=" flex items-center gap-x-5">
                     <DropDown />
                     <SideBar icon={<PiShoppingCartSimpleBold size={22} />}>
                         <Cart />
