@@ -24,7 +24,7 @@ const imageSuperRefineValidation = ([file]: File[], ctx: z.RefinementCtx) => {
 export const bookSchema = z.object({
     title: z.string().min(4).max(30),
     author: z.string().min(4).max(30),
-    description: z.string().max(300),
+    description: z.string().min(10).max(300),
     price: z.number().min(0),
     year: z.number().int().min(1).max(new Date().getFullYear()),
     genre: z.nativeEnum(GENRES),

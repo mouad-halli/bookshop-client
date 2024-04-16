@@ -3,8 +3,13 @@ import Modal from "../../../../components/Modal/Modal"
 import useIsComponentVisibleOnClick from "../../../../hooks/useIsComponentVisibleOnClick"
 import { GENRES, LANGUAGES } from "../../../../constants/book"
 import useAddListing from "./useAddListing"
+import { BookType } from "../../../../@Types/book"
 
-const AddListing = () => {
+interface PropsType {
+    addItem: (item: BookType) => void
+}
+
+const AddListing = ({ addItem }: PropsType) => {
 
     const {
         ref: modalRef,
@@ -14,7 +19,7 @@ const AddListing = () => {
 
     const inputStyle = "border-[1px] border-black px-2 py-0.5 rounded "
 
-    const { register, handleSubmit, onSubmit, errors, isDisabled } = useAddListing()
+    const { register, handleSubmit, onSubmit, errors, isDisabled, reset } = useAddListing(addItem)
 
     return (
         <div ref={modalRef} className="flex items-center">
@@ -103,7 +108,7 @@ const AddListing = () => {
                                     {errors.price && <span className="text-red-500 text-sm">{`(${errors.price.message})`}</span>}
                                 </div>
                                 <input
-                                    type="number" placeholder="Price"
+                                    type="number" placeholder="Price" step=".01"
                                     {...register("price", { valueAsNumber: true })}
                                     className={`${inputStyle} border-2 border-slate-400 outline-none focus-within:border-black py-2`}
                                 />
@@ -147,16 +152,19 @@ const AddListing = () => {
                             </div>
                         </div>
                         <div className="flex pt-4 justify-between gap-x-5">
-                            <button className="w-full text-slate-600 font-medium ring-1
-                            ring-slate-400 rounded-lg px-10 py-2"
-                                onClick={() => setIsModalVisible(false)}
+                            <button
+                                className="w-full text-slate-600 font-medium ring-1
+                              ring-slate-400 rounded-lg px-10 py-2"
+                                onClick={() => {reset(); setIsModalVisible(false)}}
+                                type="button"
                             >
                                 Cancel
                             </button>
                             <button className="w-full text-white font-medium bg-blue-600
                             rounded-lg px-10 py-2"
-                                // onClick={() => setIsModalVisible(false)}
+                                onClick={() => setIsModalVisible(false)}
                                 disabled={isDisabled}
+                                type="submit"
                             >
                                 Submit
                             </button>
