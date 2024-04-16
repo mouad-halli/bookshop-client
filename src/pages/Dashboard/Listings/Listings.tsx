@@ -19,7 +19,7 @@ const Listings = () => {
                 ))}
             </div>
             <div className="grow flex items-end justify-center">
-                <Pagination itemsPerVue={12} totalItemsCount={54} />
+                <Pagination itemsPerVue={12} totalItemsCount={listings.length} />
             </div>
         </div>
     )

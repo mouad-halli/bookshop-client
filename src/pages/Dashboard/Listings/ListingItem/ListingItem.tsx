@@ -10,7 +10,9 @@ interface Propstype {
 }
 
 const ListingItem = ({ book, deleteItem }: Propstype) => {
+
 	const {_id, image, title, price, author } = book
+    
 	return (
 		<div className=' border  flex gap-x-4 px-5 py-4 border-slate-400 h-auto rounded-md shadow-md overflow-hidden'>
     		<div className=' min-w-24 w-24 overflow-hidden'>
@@ -37,7 +39,8 @@ const ListingItem = ({ book, deleteItem }: Propstype) => {
                     />
 					<Icon
                         icon={<FaPencil size={18} />}
-                        className='ring-blue-500 text-blue-500'/>
+                        className='ring-blue-500 text-blue-500'
+                    />
 				</div>
 			</div>
 		</div>
