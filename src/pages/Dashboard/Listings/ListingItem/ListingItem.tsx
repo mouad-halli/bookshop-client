@@ -2,26 +2,15 @@ import { booksMockData } from '../../../../constants/mokeData'
 import { MdDelete } from "react-icons/md";
 import { FaPencil } from "react-icons/fa6";
 import { BookType } from '../../../../@Types/book';
-
-interface IconPropstype {
-	icon: JSX.Element
-	styling: string
-}
-
-const Icon = ({ icon, styling }: IconPropstype) => {
-	return (
-		<div className={` w-min p-1 ring-2 ${styling} rounded-full cursor-pointer`}>
-			{icon}
-		</div>
-	)
-}
+import Icon from '../../../../components/UI/Icon';
 
 interface Propstype {
 	book: BookType
+    deleteItem: (itemId: string) => void
 }
 
-const ListingItem = ({ book }: Propstype) => {
-	const { image, title, price, author } = book
+const ListingItem = ({ book, deleteItem }: Propstype) => {
+	const {_id, image, title, price, author } = book
 	return (
 		<div className=' border  flex gap-x-4 px-5 py-4 border-slate-400 h-auto rounded-md shadow-md overflow-hidden'>
     		<div className=' min-w-24 w-24 overflow-hidden'>
@@ -41,8 +30,14 @@ const ListingItem = ({ book }: Propstype) => {
 					<h1 className='text-sm font-semibold'>${price}</h1>
 				</div>
 				<div className='grow flex gap-x-4 items-end justify-end p-1'>
-					<Icon icon={<MdDelete size={18} />} styling={'ring-red-500 text-red-500'} />
-					<Icon icon={<FaPencil size={18} />} styling={'ring-blue-500 text-blue-500'} />
+					<Icon
+                        onClick={() => deleteItem(_id)}
+                        icon={<MdDelete size={18} />}
+                        className={'ring-red-500 text-red-500'}
+                    />
+					<Icon
+                        icon={<FaPencil size={18} />}
+                        className='ring-blue-500 text-blue-500'/>
 				</div>
 			</div>
 		</div>

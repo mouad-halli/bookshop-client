@@ -11,7 +11,7 @@ const Pagination = ({itemsPerVue, totalItemsCount}: Propstype) => {
     const totalPagesCount = Math.ceil(totalItemsCount / itemsPerVue)
     const [currentPage, setCurrentPage] = useState(1)
 
-    const pages = usePaginate(currentPage, 1, 23, 1)
+    const pages = usePaginate(currentPage, 12, totalItemsCount, 1)
 
     const handleIncrementPage = () => {
         if (currentPage + 1 < totalPagesCount)
