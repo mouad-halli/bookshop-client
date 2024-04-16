@@ -2,8 +2,11 @@ import { FieldValues, useForm } from "react-hook-form"
 import { TBookSchema, bookSchema } from "../../../../schema/book"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { createBook } from "../../../../services/api/book"
+import { BookType } from "../../../../@Types/book"
 
-const useAddListing = () => {
+type addItemType = (item: BookType) => void
+
+const useAddListing = (addItem: addItemType) => {
 
     const {
         register, handleSubmit, setError, reset,
@@ -15,24 +18,26 @@ const useAddListing = () => {
 
     const onSubmit = async (data: FieldValues) => {
         try {
-            const formData = new FormData()
-
-            for (const key in data)
-                formData.append(key, data[key])
+            // const formData = new FormData()
+            const {image, ...bookData} = data
+            // for (const key in data)
+            //     formData.append(key, data[key])
 
             // for (var pair of formData.entries()) {
             //     console.log(pair[0]+ ', ' + pair[1]); 
             // }
 
-            await createBook(formData)
-            
+            const book = await createBook(bookData)
+            addItem(book)
+            reset()
+
         } catch (error) {
             console.log(error)
         }
     }
 
     return {
-        register, handleSubmit, onSubmit, errors, isDisabled: !isValid || isSubmitting
+        register, handleSubmit, onSubmit, errors, isDisabled: !isValid || isSubmitting, reset
     }
 }
 
