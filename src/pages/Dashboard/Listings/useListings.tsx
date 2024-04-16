@@ -7,6 +7,12 @@ const useListings = () => {
 
     const [listings, setListings] = useState<BookType[]>([])
 
+    const handleDeleteItem = (itemId: string) => {
+        setListings(
+            listings.filter((listing) => listing._id !== itemId)
+        )
+    }
+
     useEffect(() => {
         const fetchListings = async () => {
             try {
@@ -22,7 +28,7 @@ const useListings = () => {
     }, [])
 
     return {
-        listings
+        listings, handleDeleteItem
     }
 }
 

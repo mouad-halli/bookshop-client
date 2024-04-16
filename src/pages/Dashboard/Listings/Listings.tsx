@@ -5,7 +5,7 @@ import Pagination from "./Pagination/Pagination";
 
 const Listings = () => {
 
-    const { listings } = useListings()
+    const { listings, handleDeleteItem } = useListings()
 
     return (
         <div className="w-full min-h-full flex flex-col gap-y-10 py-8 px-16 ">
@@ -15,7 +15,7 @@ const Listings = () => {
             </div>
             <div className="w-full grid gap-4 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
                 {listings.map((item) => (
-                    <ListingItem key={item._id} book={item} />
+                    <ListingItem deleteItem={handleDeleteItem} key={item._id} book={item} />
                 ))}
             </div>
             <div className="grow flex items-end justify-center">
