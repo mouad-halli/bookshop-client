@@ -3,6 +3,8 @@ import { MdDelete } from "react-icons/md";
 import { FaPencil } from "react-icons/fa6";
 import { BookType } from '../../../../@Types/book';
 import Icon from '../../../../components/UI/Icon';
+import { useState } from 'react';
+import Modal from '../../../../components/Modal/Modal';
 
 interface Propstype {
 	book: BookType
@@ -12,6 +14,8 @@ interface Propstype {
 const ListingItem = ({ book, deleteItem }: Propstype) => {
 
 	const {_id, image, title, price, author } = book
+
+    const [isModalVisible, setIsModalVisible] = useState(false)
     
 	return (
 		<div className=' border  flex gap-x-4 px-5 py-4 border-slate-400 h-auto rounded-md shadow-md overflow-hidden'>
@@ -38,9 +42,13 @@ const ListingItem = ({ book, deleteItem }: Propstype) => {
                         className={'ring-red-500 text-red-500'}
                     />
 					<Icon
+                    onClick={() => setIsModalVisible(true)}
                         icon={<FaPencil size={18} />}
                         className='ring-blue-500 text-blue-500'
                     />
+                    <Modal modalTitle='Update Listing' isModalVisible={isModalVisible} onClose={() => setIsModalVisible(false)}>
+                        <></>
+                    </Modal>
 				</div>
 			</div>
 		</div>

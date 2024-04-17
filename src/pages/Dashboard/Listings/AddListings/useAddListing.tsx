@@ -3,10 +3,13 @@ import { TBookSchema, bookSchema } from "../../../../schema/book"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { createBook } from "../../../../services/api/book"
 import { BookType } from "../../../../@Types/book"
+import { useState } from "react"
 
 type addItemType = (item: BookType) => void
 
 const useAddListing = (addItem: addItemType) => {
+
+    const [isModalVisible, setIsModalVisible] = useState(false)
 
     const {
         register, handleSubmit, setError, reset,
@@ -37,7 +40,8 @@ const useAddListing = (addItem: addItemType) => {
     }
 
     return {
-        register, handleSubmit, onSubmit, errors, isDisabled: !isValid || isSubmitting, reset
+        register, handleSubmit, onSubmit, errors, isDisabled: !isValid || isSubmitting, reset,
+        isModalVisible, setIsModalVisible
     }
 }
 

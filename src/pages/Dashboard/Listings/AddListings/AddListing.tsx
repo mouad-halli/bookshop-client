@@ -2,7 +2,6 @@ import Modal from "../../../../components/Modal/Modal"
 import { GENRES, LANGUAGES } from "../../../../constants/book"
 import useAddListing from "./useAddListing"
 import { BookType } from "../../../../@Types/book"
-import { useState } from "react"
 
 interface PropsType {
     addItem: (item: BookType) => void
@@ -12,8 +11,7 @@ const AddListing = ({ addItem }: PropsType) => {
 
     const inputStyle = "border-[1px] border-black px-2 py-0.5 rounded "
 
-    const { register, handleSubmit, onSubmit, errors, isDisabled, reset } = useAddListing(addItem)
-    const [isModalVisible, setIsModalVisible] = useState(false)
+    const { register, handleSubmit, onSubmit, errors, isDisabled, reset, isModalVisible, setIsModalVisible } = useAddListing(addItem)
 
     return (
         <div className="flex items-center">
