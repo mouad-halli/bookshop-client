@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { usePaginate } from "../../../../hooks/usePaginate"
 import { PAGE_SIZE } from "../useListings"
 
@@ -11,12 +10,8 @@ interface Propstype {
 
 const Pagination = ({itemsPerVue, totalItemsCount, currentPage, setCurrentPage}: Propstype) => {
 
-    const totalPagesCount = Math.ceil(totalItemsCount / itemsPerVue)
-
-    console.log(currentPage, totalPagesCount)
-    // const [currentPage, setCurrentPage] = useState(1)
-
     const pages = usePaginate(currentPage, PAGE_SIZE, totalItemsCount, 1)
+    const totalPagesCount = Math.ceil(totalItemsCount / itemsPerVue)
 
     const handleIncrementPage = () => {
         if (currentPage + 1 <= totalPagesCount)

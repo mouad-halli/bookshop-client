@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom'
 import DashboardSideNav from '../components/DashboardNav/DashboardSideNav'
 import DashboardTopNav from '../components/DashboardNav/DashboardTopNav'
+import DashboardFixedSideNav from '../components/DashboardNav/DashboardFixedSideNav'
 
 const DashboardLayout = () => {
 
@@ -10,10 +11,11 @@ const DashboardLayout = () => {
                 <DashboardTopNav />
             </div>
             <div className='w-full grow flex flex-row'>
-                <div className='shrink-0 w-60'>
+                <div className='hidden sm:block shrink-0 w-20 md:w-60'>
                     <DashboardSideNav />
                 </div>
-                <div className=' grow rounded-xl bg-slate-50 mx-6'>
+                <DashboardFixedSideNav />
+                <div className=' grow rounded-xl bg-slate-50 md:mx-6'>
                     <Outlet />
                 </div>
             </div>
