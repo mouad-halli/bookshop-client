@@ -31,19 +31,7 @@ const Modal = ({ modalTitle, isModalVisible, onClose, children }: PropsType) => 
             </div>
         </div>
     )
-
-    return (
-        <>
-        {isModalVisible &&
-            <div /*onClick={() => setIsModalVisible(false)}*/ onClick={onClose} className="fixed top-0 left-0 z-10 h-full w-full bg-black bg-opacity-25"></div>}
-            <div
-                className={`z-10 fixed inset-0 m-auto h-min w-min bg-white rounded-lg transition-opacity shadow-lg
-                ease-linear ${isModalVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-            >
-                {children}
-            </div>
-        </>
-    )
+    
 }
 
 export default Modal

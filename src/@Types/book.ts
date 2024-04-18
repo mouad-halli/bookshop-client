@@ -8,7 +8,7 @@ export interface BookType {
     price: number
     year: number
     genre: string
-    language: string
+    bookLanguage: string
     seller?: userType
     image: string
 }

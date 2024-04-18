@@ -1,17 +1,18 @@
-import { booksMockData } from '../../../../constants/mokeData'
 import { MdDelete } from "react-icons/md";
 import { FaPencil } from "react-icons/fa6";
 import { BookType } from '../../../../@Types/book';
 import Icon from '../../../../components/UI/Icon';
 import { useState } from 'react';
 import Modal from '../../../../components/Modal/Modal';
+import ListingForm from '../AddListings/AddListing';
 
 interface Propstype {
 	book: BookType
     deleteItem: (itemId: string) => void
+    updateItem: (updatedItem: BookType) => void
 }
 
-const ListingItem = ({ book, deleteItem }: Propstype) => {
+const ListingItem = ({ book, deleteItem, updateItem }: Propstype) => {
 
 	const {_id, image, title, price, author } = book
 
@@ -47,7 +48,7 @@ const ListingItem = ({ book, deleteItem }: Propstype) => {
                         className='ring-blue-500 text-blue-500'
                     />
                     <Modal modalTitle='Update Listing' isModalVisible={isModalVisible} onClose={() => setIsModalVisible(false)}>
-                        <></>
+                        <ListingForm setIsModalVisible={setIsModalVisible} listing={book} updateItem={updateItem} />
                     </Modal>
 				</div>
 			</div>

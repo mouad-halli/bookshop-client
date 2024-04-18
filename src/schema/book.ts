@@ -28,7 +28,7 @@ export const bookSchema = z.object({
     price: z.number().min(0),
     year: z.number().int().min(1).max(new Date().getFullYear()),
     genre: z.nativeEnum(GENRES),
-    language: z.nativeEnum(LANGUAGES),
+    bookLanguage: z.nativeEnum(LANGUAGES),
     image: z./*instanceof(File)*/any().superRefine(imageSuperRefineValidation)
 })
 
