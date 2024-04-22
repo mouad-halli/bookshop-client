@@ -1,9 +1,9 @@
-import Carousel from "../../components/Carousel/Carousel"
-import CarouselItem from "../../components/Carousel/CarouselItem"
+import Carousel from "../../components/CarouselV1/Carousel"
 
 const MultipleBooksPerViewCarousel = () => {
+
     return (
-        <div className=" h-[23rem] w-full flex flex-col gap-y-4 pb-2" >
+        <div className=" h-[29rem] w-full flex flex-col gap-y-4 pb-2" >
             <h1 className="text-3xl font-bold text-indigo-950">Slider Title</h1>
             <div className="flex justify-between items-center">
                 <div className="flex items-center gap-x-4 text-black/80 cursor-pointer">
@@ -14,14 +14,15 @@ const MultipleBooksPerViewCarousel = () => {
                 </div>
                 <h2 className=" border-b border-black/80 cursor-pointer">{`view all (${200})`}</h2>
             </div>
-            <Carousel styling="w-full border-black flex-1">
+            {/* <Carousel styling="w-full border-black flex-1"> */}
+            <Carousel isFullView={false} options={{ dragFree: true }} >
             {[...Array(12)].map((_, index) => (
-                <CarouselItem key={index} styling="min-w-40 mr-2 shadow-lg rounded border" >
+                <div key={index} className="min-w-40 drop-shadow-lg rounded-md overflow-hidden" >
                     <img
                         src="https://booksondemand.ma/cdn/shop/products/Atomichabits-min.jpg?v=1631701304&width=823"
                         className="h-full w-full object-cover"
                     />
-                </CarouselItem>
+                </div>
             ))}
             </Carousel>
         </div>

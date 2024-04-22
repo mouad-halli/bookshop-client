@@ -4,7 +4,7 @@ import { BookType } from '../../../../@Types/book';
 import Icon from '../../../../components/UI/Icon';
 import { useState } from 'react';
 import Modal from '../../../../components/Modal/Modal';
-import ListingForm from '../AddListings/AddListing';
+import ListingForm from '../AddListings/ListingForm';
 
 interface Propstype {
 	book: BookType

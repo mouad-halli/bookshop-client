@@ -12,7 +12,7 @@ const Navbar = () => {
 
     const handleScroll = () => {
 
-        if (window.scrollY >= 100)
+        if (window.scrollY > 0)
             setfixed(true)
         else if (window.scrollY === 0)
             setfixed(false)
@@ -27,7 +27,7 @@ const Navbar = () => {
     }, [])
 
     return (
-        <header className={`z-10 h-[16dvh] ${fixed ? 'fixed top-0' : ''} px-3 2xl:px-24 w-full flex flex-col justify-center gap-y-6 bg-white`}>
+        <header className={`z-10 h-[16dvh] ${fixed ? 'sticky top-0' : ''} px-3 2xl:px-24 w-full flex flex-col justify-center gap-y-6 bg-white`}>
             <div className="flex items-center justify-between">
                 <div className=" text-indigo-950 text-3xl font-bold">
                     <h1>BookShop</h1>

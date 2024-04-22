@@ -26,7 +26,7 @@ const ListingForm = ({ addItem, updateItem, setIsModalVisible, listing }: PropsT
     return (
         <form className="flex flex-col gap-y-3 " onSubmit={handleSubmit(onSubmit)}>
             <div className="flex gap-x-3">
-                <div className=" flex flex-col gap-y-1 truncate w-72">
+                <div className=" flex flex-col gap-y-1 truncate w-full sm:w-72">
                     <div className="flex gap-x-1 items-center">
                         <span className="text-gray-700">Title</span>
                         {errors.title && <span className="text-red-500 text-sm">{`(${errors.title.message})`}</span>}
@@ -37,7 +37,7 @@ const ListingForm = ({ addItem, updateItem, setIsModalVisible, listing }: PropsT
                         className={`${inputStyle} border-2 border-slate-400 outline-none focus-within:border-black w-full py-2`}
                     />
                 </div>
-                <div className=" flex flex-col gap-y-1 truncate w-72">
+                <div className=" flex flex-col gap-y-1 truncate w-full sm:w-72">
                     <div className="flex gap-x-1 items-center">
                         <span className="text-gray-700">Author</span>
                         {errors.author && <span className="text-red-500 text-sm">{`(${errors.author.message})`}</span>}
@@ -50,7 +50,7 @@ const ListingForm = ({ addItem, updateItem, setIsModalVisible, listing }: PropsT
                 </div>
             </div>
             <div className="flex gap-x-3">
-                <div className="flex flex-col gap-y-1 truncate w-72">
+                <div className="flex flex-col gap-y-1 truncate w-full sm:w-72">
                     <div className="flex gap-x-1 items-center">
                         <span className="text-gray-700">Genre</span>
                         {errors.genre && <span className="text-red-500 text-sm">{`(${errors.genre.message})`}</span>}
@@ -65,7 +65,7 @@ const ListingForm = ({ addItem, updateItem, setIsModalVisible, listing }: PropsT
                     </select>
                 </div>
                 <div
-                    className="flex flex-col gap-y-1 truncate w-72"
+                    className="flex flex-col gap-y-1 truncate w-full sm:w-72"
                 >
                     <div className="flex gap-x-1 items-center">
                         <span className="text-gray-700">Language</span>
@@ -81,7 +81,7 @@ const ListingForm = ({ addItem, updateItem, setIsModalVisible, listing }: PropsT
                 </div>
             </div>
             <div className="flex gap-x-3">
-                <div className="flex flex-col gap-y-1 truncate w-72">
+                <div className="flex flex-col gap-y-1 truncate w-full sm:w-72">
                     <div className="flex gap-x-1 items-center">
                         <span className="text-gray-700">Year</span>
                         {errors.year && <span className="text-red-500 text-sm">{`(${errors.year.message})`}</span>}
@@ -92,7 +92,7 @@ const ListingForm = ({ addItem, updateItem, setIsModalVisible, listing }: PropsT
                         className={`${inputStyle} border-2 border-slate-400 outline-none focus-within:border-black py-2`}
                     />
                 </div>
-                <div className="flex flex-col gap-y-1 truncate w-72">
+                <div className="flex flex-col gap-y-1 truncate w-full sm:w-72">
                     <div className="flex gap-x-1 items-center">
                         <span className="text-gray-700">Price</span>
                         {errors.price && <span className="text-red-500 text-sm">{`(${errors.price.message})`}</span>}
@@ -104,7 +104,7 @@ const ListingForm = ({ addItem, updateItem, setIsModalVisible, listing }: PropsT
                     />
                 </div>
             </div>
-            <div className="flex justify-between gap-x-4">
+            <div className="flex flex-col sm:flex-row justify-between gap-x-4">
                 <div className="flex flex-col gap-y-1 truncate w-full">
                     <div className="flex gap-x-1 items-center">
                         <span className="text-gray-700">Description</span>
@@ -112,6 +112,7 @@ const ListingForm = ({ addItem, updateItem, setIsModalVisible, listing }: PropsT
                     </div>
                     <textarea
                         placeholder="Description"
+                        rows={4}
                         {...register("description", { value: listing?.description })}
                         className={`h-full resize-none border-2 border-slate-400 outline-none focus-within:border-black ${inputStyle}`}
                     />
@@ -144,14 +145,14 @@ const ListingForm = ({ addItem, updateItem, setIsModalVisible, listing }: PropsT
             <div className="flex pt-6 justify-between gap-x-5">
                 <button
                     className="w-full text-slate-600 font-medium ring-1
-                  ring-slate-400 rounded-lg px-10 py-2"
+                  ring-slate-400 rounded-lg sm:px-10 py-2"
                     onClick={() => {reset(); setIsModalVisible(false)}}
                     type="button"
                 >
                     Cancel
                 </button>
                 <button className="w-full text-white font-medium bg-blue-600
-                rounded-lg px-10 py-2"
+                rounded-lg sm:px-10 py-2"
                     onClick={() => setIsModalVisible(false)}
                     disabled={isDisabled}
                     type="submit"

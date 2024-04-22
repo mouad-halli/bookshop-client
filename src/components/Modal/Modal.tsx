@@ -20,7 +20,7 @@ const Modal = ({ modalTitle, isModalVisible, onClose, children }: PropsType) => 
             <div
                 onClick={(e) => e.stopPropagation()}
                 className={`
-                bg-white rounded-xl shadow p-12 transition-all 
+                bg-white rounded-xl shadow w-full sm:w-min px-10 py-6 sm:p-12 transition-all 
                 ${isModalVisible ? "scale-100 opacity-100" : "scale-125 opacity-0"}
             `}>
                 <div className="flex gap-x-3 items-center pb-6">
