@@ -2,7 +2,7 @@ import useListings, {PAGE_SIZE} from "./useListings"
 import ListingItem from './ListingItem/ListingItem';
 import Pagination from "./Pagination/Pagination";
 import Modal from "../../../components/Modal/Modal";
-import ListingForm from "./AddListings/AddListing";
+import ListingForm from "./AddListings/ListingForm";
 
 const Listings = () => {
 
