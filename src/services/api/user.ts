@@ -27,3 +27,11 @@ export const uploadUserImg = async (image: File) => {
     form.append('image', image)
     return (await $api.put('/user/upload/image', form, { headers: { 'Content-Type': "multipart/form-data" } })).data
 }
+
+export const updateUserSellerStatus = async (isSeller: boolean) => {
+    return await $api.put('user/is-seller', { isSeller })
+}
+
+export const getSellers = async (sellersLimit: number, booksLimit: number): Promise<userType[]> => {
+    return (await $api.get(`user/sellers?sellers_limit=${sellersLimit}&books_limit=${booksLimit}`)).data
+}

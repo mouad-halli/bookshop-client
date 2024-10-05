@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useEffect, useMemo, useState } from "react";
+import { FC, ReactNode, createContext, useEffect, useMemo, useState } from "react";
 import { userType } from "../@Types/user";
 // import { sleep } from "../utils/helpers";
 import { getUser } from "../services/api/user";
@@ -13,10 +13,10 @@ export const userContext = createContext<userContextType>({} as userContextType)
 
 type userProviderProps = { children: ReactNode }
 
-export const UserContextProvider = ( {children}:userProviderProps ) => {
+export const UserContextProvider: FC<userProviderProps> = ({ children }) => {
 
     const [user, setUser] = useState<userType | null | undefined>(undefined)
-    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleUpdateUser = (newUserData: userType) => {
         if (newUserData.imgUrl)

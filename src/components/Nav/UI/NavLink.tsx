@@ -25,7 +25,7 @@ const NavLink = ( {linkText, direction} : PropsType) => {
             <Link to={direction}>
                 <li
                     onMouseOver={() => dropDownContent.length > 0 && setIsComponentVisible(true)}
-                    className="pb-2 px-1 text-lg border-b-2 border-transparent group-hover:border-indigo-900">
+                    className=" pb-4 px-1 border-b-2 border-transparent group-hover:border-indigo-900">
                     {linkText}
                 </li>
             </Link>

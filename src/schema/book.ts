@@ -26,6 +26,7 @@ export const bookSchema = z.object({
     author: z.string().min(4).max(30),
     description: z.string().min(10).max(300),
     price: z.number().min(0),
+    stockCount: z.number().min(0),
     year: z.number().int().min(1).max(new Date().getFullYear()),
     genre: z.nativeEnum(GENRES),
     bookLanguage: z.nativeEnum(LANGUAGES),

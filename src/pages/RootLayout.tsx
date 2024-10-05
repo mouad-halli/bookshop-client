@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom'
 
 const RootLayout = () => {
     return (
-        <div className=' font-Asap'>
+        <div className=''>
             <Navbar />
             <Outlet />
             <Footer />
