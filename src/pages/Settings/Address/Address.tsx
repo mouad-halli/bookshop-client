@@ -8,7 +8,7 @@ const Address = () => {
 
     return (
         <div className="shrink-0">
-            <h1 className="text-xl font-semibold font-Archivo pb-4 pl-4">Address</h1>
+            <h1 className="font-secondary text-xl font-semibold pb-4 pl-4">Address</h1>
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-y-1 border p-5">
                 <div className="flex gap-x-1 items-center truncate">
                     <span className="text-gray-500">Address 1</span>
@@ -58,7 +58,7 @@ const Address = () => {
                 </div>
                 <button
                     type="submit" disabled={ !isDirty || !isValid || isSubmitting}
-                    className="py-2.5 border md:w-min px-8 mt-4 border-indigo-600 text-indigo-700"
+                    className="font-accent py-2.5 border md:w-min px-8 mt-4 border-indigo-600 text-indigo-700"
                 >
                     {isSubmitting ? 'Saving...' : 'Save'}
                 </button>

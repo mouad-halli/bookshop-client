@@ -1,21 +1,23 @@
-import { useContext } from "react"
+import { FC } from "react"
 import useInformation from "./useInformatin"
-import { userContext } from "../../../Contexts/userContext"
+import { userType } from "../../../@Types/user"
 
-const Information = () => {
+interface PropsType {
+    user: userType | null | undefined
+}
+
+const Information: FC<PropsType> = ({ user }) => {
 
     const {
         forms, onInformationFormSubmit, onPasswordFormSubmit
     } = useInformation()
-
-    const { user } = useContext(userContext)
 
     const informationFormErrors = forms.information.formState.errors
     const passwordFormErrors = forms.password.formState.errors
 
     return (
         <div className="">
-            <h1 className="text-xl font-semibold font-Archivo pb-4 pl-4">Information</h1>
+            <h1 className="font-secondary text-xl font-semibold pb-4 pl-4">Information</h1>
             <div className="flex flex-col border p-5 gap-y-6">
                 <form onSubmit={forms.information.handleSubmit(onInformationFormSubmit)} className="flex flex-col gap-y-1">
                     <div className="flex gap-x-1 items-center truncate">
@@ -50,7 +52,7 @@ const Information = () => {
                     />
                     <button
                         type="submit" disabled={ !forms.information.formState.isDirty || forms.information.formState.isSubmitting}
-                        className="py-2.5 border md:w-min px-8 mt-4 border-indigo-600 text-indigo-700"
+                        className="font-accent py-2.5 border md:w-min px-8 mt-4 border-indigo-600 text-indigo-700"
                     >
                         {forms.information.formState.isSubmitting ? "saving ..." : "save"}
                     </button>
@@ -87,7 +89,7 @@ const Information = () => {
                         </div>
                         <button
                             type="submit" disabled={ !forms.password.formState.isDirty || !forms.password.formState.isValid || forms.password.formState.isSubmitting}
-                            className="py-2.5 border mt-4 border-indigo-600 text-indigo-700"
+                            className="font-accent py-2.5 border mt-4 border-indigo-600 text-indigo-700"
                         >
                             Change password
                         </button>

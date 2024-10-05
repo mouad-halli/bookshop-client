@@ -19,6 +19,19 @@ const useLogin = () => {
         resolver: zodResolver(loginFormSchema)
     })
 
+    const autoLogin = async () => {
+        try {
+            const user = await login({
+                email: import.meta.env.VITE_AUTO_LOGIN_EMAIL,
+                password: import.meta.env.VITE_AUTO_LOGIN_PASSWORD
+            })
+            handleUpdateUser(user)
+            navigate('/')
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     const onSubmit = async (data: FieldValues) => {
         try {
             const user = await login({email: data.email, password: data.password})
@@ -41,7 +54,7 @@ const useLogin = () => {
     }
 
     return {
-        register, handleSubmit, onSubmit, errors, isSubmitting, navigate, isDirty, isValid
+        register, handleSubmit, onSubmit, errors, isSubmitting, navigate, isDirty, isValid, autoLogin
     }
 }
 

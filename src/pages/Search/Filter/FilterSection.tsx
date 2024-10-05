@@ -12,14 +12,14 @@ const FilterSection = () => {
     const [showGenresFilter, setShowGenresFilter] = useState(false)
 
     return (
-        <section className="shrink-0 w-[17rem] h-max hidden sm:flex pr-10">
-            <div className="w-full flex flex-col text-sm">
-                <h1 className=" border-b py-4">Filter:</h1>
+        <section className=" font-primary shrink-0 w-[17rem] h-max hidden sm:flex pr-10">
+            <div className="w-full flex flex-col">
+                <h1 className="font-secondary border-b py-4">Filter:</h1>
                 <div className=" border-b py-4 ">
                     <div className="flex justify-between items-center cursor-pointer hover:underline"
                         onClick={() => setShowAvailabilityFilter(!showAvailabilityFilter)}
                     >
-                        <span className="">Availability</span>
+                        <span className="font-secondary">Availability</span>
                         <IoIosArrowDown />
                     </div>
                     {showAvailabilityFilter && <AvailabilityFilter />}
@@ -28,7 +28,7 @@ const FilterSection = () => {
                     <div className="flex justify-between items-center cursor-pointer hover:underline"
                         onClick={() => setShowPriceFilter(!showPriceFilter)}
                     >
-                        <span>Price</span>
+                        <span className="font-secondary">Price</span>
                         <IoIosArrowDown />
                     </div>
                     {showPriceFilter && <PriceFilter />}
@@ -37,7 +37,7 @@ const FilterSection = () => {
                     <div className="flex justify-between items-center cursor-pointer hover:underline"
                         onClick={() => setShowGenresFilter(!showGenresFilter)}
                     >
-                        <span>Genres</span>
+                        <span className="font-secondary">Genres</span>
                         <IoIosArrowDown />
                     </div>
                     {showGenresFilter && <GenresFilter genres={Object.values(GENRES)} />}

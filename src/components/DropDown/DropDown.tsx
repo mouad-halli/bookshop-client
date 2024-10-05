@@ -29,9 +29,9 @@ const DropDownMenu = ( {isDropDownVisible, setIsDropDownVisible}: PropsType) => 
             <div>
                 <Link  onClick={() => setIsDropDownVisible(false)} to="/dashboard">Dashboard</Link>
             </div>
-            <div>
+            {/* <div>
                 <Link  onClick={() => setIsDropDownVisible(false)} to="/orders">Orders</Link>
-            </div>
+            </div> */}
             <div>
                 <Link  onClick={() => setIsDropDownVisible(false)} to="/settings">Settings</Link>
             </div>
@@ -51,7 +51,7 @@ const DropDown = () => {
 
     return (
         <div ref={dropDownRef} className="relative z-10">
-            <PiUserCircleBold onClick={() => user ? setIsDropDownVisible(!isDropDownVisible) : navigate('/login')} className="cursor-pointer text-indigo-900" size={23} />
+            <PiUserCircleBold onClick={() => user ? setIsDropDownVisible(!isDropDownVisible) : navigate('/login')} className="cursor-pointer text-dark-green" size={23} />
             <DropDownMenu isDropDownVisible={isDropDownVisible} setIsDropDownVisible={setIsDropDownVisible} />
         </div>
     )

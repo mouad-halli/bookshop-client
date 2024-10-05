@@ -1,9 +1,13 @@
+import { BookType } from "./book"
+
 export interface userType {
+    _id: string
     firstname: string
     lastname: string
     email: string
     imgUrl?: string | null
     isSeller: boolean
+    books?: BookType[]
 }
 
 export interface userAddress {

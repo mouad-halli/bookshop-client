@@ -14,14 +14,14 @@ interface Propstype {
 
 const ListingItem = ({ book, deleteItem, updateItem }: Propstype) => {
 
-	const {_id, image, title, price, author } = book
+	const {_id, imageUrl, title, price, author } = book
 
     const [isModalVisible, setIsModalVisible] = useState(false)
     
 	return (
 		<div className=' border  flex gap-x-4 px-5 py-4 border-slate-400 h-auto rounded-md shadow-md overflow-hidden'>
     		<div className=' min-w-24 w-24 overflow-hidden'>
-    			<img src={image} className='w-auto h-auto object-cover' />
+    			{imageUrl && <img src={imageUrl} className='w-auto h-auto object-cover' />}
       		</div>
 			<div className='w-full flex flex-col truncate'>
 				<div className='flex gap-x-1 items-center'>

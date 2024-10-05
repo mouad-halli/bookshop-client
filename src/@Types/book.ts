@@ -10,5 +10,6 @@ export interface BookType {
     genre: string
     bookLanguage: string
     seller?: userType
-    image: string
+    stockCount: number
+    imageUrl: string | null
 }

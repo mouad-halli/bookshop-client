@@ -20,7 +20,7 @@ const ListingForm = ({ addItem, updateItem, setIsModalVisible, listing }: PropsT
         onSubmit,
         errors,
         isDisabled,
-        reset,
+        reset
     } = useAddListing(addItem, updateItem, formType, listing?._id)
 
     return (
@@ -87,7 +87,7 @@ const ListingForm = ({ addItem, updateItem, setIsModalVisible, listing }: PropsT
                         {errors.year && <span className="text-red-500 text-sm">{`(${errors.year.message})`}</span>}
                     </div>
                     <input
-                        type="number" placeholder="Year"
+                        type="number" placeholder="Year" min={0}
                         {...register("year", { valueAsNumber: true, value: listing?.year })}
                         className={`${inputStyle} border-2 border-slate-400 outline-none focus-within:border-black py-2`}
                     />
@@ -98,11 +98,22 @@ const ListingForm = ({ addItem, updateItem, setIsModalVisible, listing }: PropsT
                         {errors.price && <span className="text-red-500 text-sm">{`(${errors.price.message})`}</span>}
                     </div>
                     <input
-                        type="number" placeholder="Price" step=".01"
+                        type="number" placeholder="Price" step=".01" min={0}
                         {...register("price", { valueAsNumber: true, value: listing?.price })}
                         className={`${inputStyle} border-2 border-slate-400 outline-none focus-within:border-black py-2`}
                     />
                 </div>
+            </div>
+            <div className="flex flex-col gap-y-1 w-full truncate sm:w-72">
+                <div className="flex gap-x-1 items-center">
+                    <span className="text-gray-700">Stock Amount</span>
+                    {errors.stockCount && <span className="text-red-500 text-sm">{`(${errors.stockCount.message})`}</span>}
+                </div>
+                <input
+                    type="number" placeholder="Stock Amount" min={0}
+                    {...register("stockCount", { valueAsNumber: true, value: listing?.stockCount })}
+                    className={`${inputStyle} border-2 border-slate-400 outline-none focus-within:border-black py-2`}
+                />
             </div>
             <div className="flex flex-col sm:flex-row justify-between gap-x-4">
                 <div className="flex flex-col gap-y-1 truncate w-full">

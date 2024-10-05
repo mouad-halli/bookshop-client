@@ -21,7 +21,7 @@ function App() {
                 <Route path='/' element={<RootLayout />}>
                     <Route index element={<Home />} />
                     <Route path='search' element={<Search />} />
-                    <Route path='product' element={<Product />} />
+                    <Route path='product/:productId' element={<Product />} />
                     <Route element={<NotAuthenticatedRoutesLayout />}>
                         <Route path='login' element={<Login />} />
                         <Route path='register' element={<Register />} />
