@@ -1,5 +1,5 @@
 import { useState } from "react"
-import FormInput from "../../../components/UI/FormInput"
+import FormInput from "../../../components/ui/FormInput"
 
 const PriceFilter = () => {
 
@@ -15,7 +15,7 @@ const PriceFilter = () => {
     }
 
     return (
-        <div className=" py-5 flex gap-x-2 items-center">
+        <div className=" p-2 flex gap-x-2 items-center">
             <FormInput
                 label="from" value={from} inputType="number"
                 handleValueChange={handleSetFromChange}

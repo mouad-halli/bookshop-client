@@ -11,5 +11,5 @@ export interface BookType {
     bookLanguage: string
     seller?: userType
     stockCount: number
-    imageUrl: string | null
+    imageUrl: string
 }

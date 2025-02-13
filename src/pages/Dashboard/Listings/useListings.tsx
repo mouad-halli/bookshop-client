@@ -7,8 +7,16 @@ export let PAGE_SIZE = 12
 const useListings = () => {
 
     const [listings, setListings] = useState<BookType[]>([])
-    const [currentPage, setCurrentPage] = useState(1)
-    const [isModalVisible, setIsModalVisible] = useState(false)
+    const [isEditing, setIsEditing] = useState<boolean>(false)
+    const [selectedListingId, setSelectedListingId] = useState<string>("")
+    const [isCreating, setIsCreating] = useState(false)
+
+    // const [currentPage, setCurrentPage] = useState(1)
+
+    const handleSetIsEditing = (listingId: string) => {
+        setSelectedListingId(listingId)
+        setIsEditing(true)
+    }
 
     const handleDeleteItem = async (itemId: string) => {
         try {
@@ -34,12 +42,12 @@ const useListings = () => {
         }))
     }
 
-    const pageListings = useMemo(() => {
-        const firstPageIdx = (currentPage - 1) * PAGE_SIZE
-        const lastPageIdx = firstPageIdx + PAGE_SIZE
+    // const pageListings = useMemo(() => {
+    //     const firstPageIdx = (currentPage - 1) * PAGE_SIZE
+    //     const lastPageIdx = firstPageIdx + PAGE_SIZE
 
-        return listings.slice(firstPageIdx, lastPageIdx)
-    }, [currentPage, listings])
+    //     return listings.slice(firstPageIdx, lastPageIdx)
+    // }, [currentPage, listings])
 
     useEffect(() => {
         const fetchListings = async () => {
@@ -54,10 +62,23 @@ const useListings = () => {
         fetchListings()
     }, [])
 
+    // return {
+    //     pageListings, handleDeleteItem, handleAddItem, handleUpdateItem,
+    //     currentPage, setCurrentPage, totalItemsCount: listings.length,
+    //     isModalVisible, setIsModalVisible
+    // }
+
     return {
-        pageListings, handleDeleteItem, handleAddItem, handleUpdateItem,
-        currentPage, setCurrentPage, totalItemsCount: listings.length,
-        isModalVisible, setIsModalVisible
+        listings,
+        handleUpdateItem,
+        handleAddItem,
+        handleDeleteItem,
+        isCreating,
+        setIsCreating,
+        isEditing,
+        setIsEditing,
+        selectedListingId,
+        handleSetIsEditing
     }
 }
 

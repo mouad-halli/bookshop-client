@@ -10,7 +10,7 @@ const AuthenticatedRoutesLayout = () => {
     if ( user === undefined)
         return null // I should change this with a Loading Screen
 
-    return user !== null ? <Outlet /> : <Navigate to={'/login'} />
+    return user !== null ? <Outlet /> : <Navigate to={'/'} />
 
 }
 

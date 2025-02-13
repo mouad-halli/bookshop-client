@@ -21,7 +21,7 @@ const Settings = () => {
     }
 
     return (
-        <main className="min-h-dvh mt-10">
+        <main className="min-h-dvh py-10">
             <div className=" font-primary w-11/12 sm:w-10/12 grid md:grid-cols-2 xl:grid-cols-3 gap-10 mx-auto ">
                 <Information user={user} />
                 <Address />

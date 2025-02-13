@@ -30,7 +30,7 @@ const FormInput = ( {inputType, label, disabled = false, errorMsg='', register}:
         <div className="w-full relative">
             <div className={`group relative h-12 w-full flex flex-col ring-1 focus-within:ring-2 ${errorMsg ? 'ring-red-500/50 hover:ring-red-500' : 'ring-slate-400/50 hover:ring-slate-400'} rounded-lg overflow-hidden `}>
                 <label className={`absolute pointer-events-none transition-all ease-in-out left-6 top-2 text-lg cursor-text ${hasValue && 'text-xs'} group-focus-within:text-xs group-focus-within:left-6 left-5 text-lg ${errorMsg ? 'text-red-400' : 'text-black/60'} `}>{label}</label>
-                <input className={` w-full h-full px-6 rounded-lg placeholder:text-lg focus-within:placeholder-transparent outline-none text-sm ${hasValue && 'pt-4'} pr-6 group-focus-within:pt-4`}
+                <input className={` w-full h-full text-black px-6 rounded-lg placeholder:text-lg focus-within:placeholder-transparent outline-none text-sm ${hasValue && 'pt-4'} pr-6 group-focus-within:pt-4`}
                     type={inputType}
                     disabled={disabled}
                     min={0}

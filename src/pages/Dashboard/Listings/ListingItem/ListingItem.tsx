@@ -1,10 +1,10 @@
 import { MdDelete } from "react-icons/md";
 import { FaPencil } from "react-icons/fa6";
 import { BookType } from '../../../../@Types/book';
-import Icon from '../../../../components/UI/Icon';
+import Icon from '../../../../components/ui/Icon';
 import { useState } from 'react';
 import Modal from '../../../../components/Modal/Modal';
-import ListingForm from '../AddListings/ListingForm';
+import ListingForm from '../ListingForm/ListingForm';
 
 interface Propstype {
 	book: BookType

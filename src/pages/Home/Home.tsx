@@ -17,7 +17,6 @@ const Home = () => {
 
                 const fetchedSellers = await getSellers(sellersLimit, booksLimit)
                 setSellers(fetchedSellers)
-                console.log(fetchedSellers)
             } catch (error) {
                 console.log(error)
             }
@@ -27,9 +26,9 @@ const Home = () => {
     }, [])
 
     return (
-        <main className="min-h-[64dvh] px-4 flex justify-center">
+        <main className="min-h-[64dvh] dark:bg-neutral-900  px-4 flex justify-center">
             <div className="w-full max-w-[75rem] mt-16">
-                <section className=" w-full flex justify-center items-center bg-slate-100 mb-24 rounded-xl">
+                <section className=" w-full flex justify-center items-center bg-slate-100 dark:bg-slate-400 dark:bg- mb-24 rounded-xl">
                     <OneItemCarousel />
                 </section>
                 <section className=" font-accent font-medium w-full flex items-end justify-evenly mb-24">

@@ -5,6 +5,9 @@ import Cart from "../../pages/Cart/Cart";
 import { useEffect, useState } from "react";
 import DropDown from "../DropDown/DropDown";
 import SearchBar from './UI/SearchBar';
+import { HiMenu } from "react-icons/hi";
+import MobileNavbar from "./MobileNavbar";
+import ThemeModeToggleDropdown from "../ui/ThemeModeToggleDropdown";
 
 const Navbar = () => {
 
@@ -27,26 +30,35 @@ const Navbar = () => {
     }, [])
 
     return (
-        <header className={`z-10 pt-4 ${fixed ? 'sticky top-0' : ''} font-secondary w-full flex flex-col justify-center items-center gap-y-6 bg-white border-b`}>
-            <div className="w-full  flex items-center justify-between px-4 lg:px-24">
-                <div className=" text-3xl font-bold text-dark-green">
+        <header className={`z-10 py-4 ${fixed ? 'sticky top-0' : ''} font-secondary w-full flex flex-col justify-center items-center gap-y-6 text-neutral-800 bg-white dark:bg-neutral-900 dark:text-white border-b`}>
+            <div className="w-full flex items-center justify-between gap-x-3 px-4 lg:px-24 ">
+                <div className=" text-3xl font-bold">
                     <h1>BookShop</h1>
                 </div>
-                <div className=" font-primary hidden sm:block relative grow max-w-[60%] md:max-w-[40%]">
+                <div className=" font-primary hidden sm:block relative grow max-w-[60%] ">
                     <SearchBar />
                 </div>
                 <div className=" flex items-center gap-x-5">
-                    <DropDown />
-                    <SideBar icon={<PiShoppingCartSimpleBold size={22} />}>
+                    <SideBar
+                        icon={<PiShoppingCartSimpleBold className="cursor-pointer" size={22}/>}
+                    >
                         <Cart />
                     </SideBar>
+                    <SideBar
+                        className="md:hidden"
+                        icon={<HiMenu className="cursor-pointer" size={22} />}
+                    >
+                        <MobileNavbar />
+                    </SideBar>
+                    <DropDown />
+                    <ThemeModeToggleDropdown />
                 </div>
             </div>
             <div className=" sm:hidden relative w-5/6 mx-auto ">
                 <SearchBar />
             </div>
-            <nav className="w-full  flex justify-center">
-                <ul className=" font-accent text-lg font-medium w-full h-full flex justify-center gap-x-32 text-slate-700">
+            <nav className="hidden w-full md:flex justify-center">
+                <ul className=" font-accent gap-x-16 font-medium w-full h-full flex justify-center dark:text-neutral-50  text-lg">
                     <NavLink linkText="Home" direction="/"/>
                     <NavLink linkText="genres" direction=""/>
                     <NavLink linkText="Last added" direction=""/>

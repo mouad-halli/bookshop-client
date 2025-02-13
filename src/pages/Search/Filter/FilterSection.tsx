@@ -1,21 +1,38 @@
-import { useState } from "react";
-import { IoIosArrowDown } from "react-icons/io";
-import { GENRES } from "../../../constants/book";
+import { GENRES } from "@/constants/enum/book";
 import AvailabilityFilter from "./AvailabilityFilter";
 import PriceFilter from "./PriceFilter";
 import GenresFilter from "./GenresFilter";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger  } from "@/components/ui/accordion";
 
 const FilterSection = () => {
 
-    const [showAvailabilityFilter, setShowAvailabilityFilter] = useState(false)
-    const [showPriceFilter, setShowPriceFilter] = useState(false)
-    const [showGenresFilter, setShowGenresFilter] = useState(false)
-
     return (
-        <section className=" font-primary shrink-0 w-[17rem] h-max hidden sm:flex pr-10">
+        <section className=" font-primary shrink-0 w-[17rem] h-max hidden md:flex pr-10">
             <div className="w-full flex flex-col">
-                <h1 className="font-secondary border-b py-4">Filter:</h1>
-                <div className=" border-b py-4 ">
+                <div className="py-4 border-b font-medium font-secondary">
+                    Filters :
+                </div>
+                <Accordion type="multiple">
+                    <AccordionItem value="Availability">
+                        <AccordionTrigger className=" text-sm font-normal font-secondary">Availability</AccordionTrigger>
+                        <AccordionContent>
+                            <AvailabilityFilter />
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="Price">
+                        <AccordionTrigger className=" text-sm font-normal font-secondary">Price</AccordionTrigger>
+                        <AccordionContent>
+                            <PriceFilter />
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="Genres">
+                        <AccordionTrigger className=" text-sm font-normal font-secondary">Genres</AccordionTrigger>
+                        <AccordionContent className=" max-h-96 overflow-auto">
+                            <GenresFilter genres={Object.values(GENRES)} />
+                        </AccordionContent>
+                    </AccordionItem>
+                </Accordion>
+                {/* <div className=" border-b py-4 ">
                     <div className="flex justify-between items-center cursor-pointer hover:underline"
                         onClick={() => setShowAvailabilityFilter(!showAvailabilityFilter)}
                     >
@@ -23,8 +40,8 @@ const FilterSection = () => {
                         <IoIosArrowDown />
                     </div>
                     {showAvailabilityFilter && <AvailabilityFilter />}
-                </div>
-                <div className="border-b py-4">
+                </div> */}
+                {/* <div className="border-b py-4">
                     <div className="flex justify-between items-center cursor-pointer hover:underline"
                         onClick={() => setShowPriceFilter(!showPriceFilter)}
                     >
@@ -32,8 +49,8 @@ const FilterSection = () => {
                         <IoIosArrowDown />
                     </div>
                     {showPriceFilter && <PriceFilter />}
-                </div>
-                <div className=" py-4">
+                </div> */}
+                {/* <div className=" py-4">
                     <div className="flex justify-between items-center cursor-pointer hover:underline"
                         onClick={() => setShowGenresFilter(!showGenresFilter)}
                     >
@@ -41,7 +58,7 @@ const FilterSection = () => {
                         <IoIosArrowDown />
                     </div>
                     {showGenresFilter && <GenresFilter genres={Object.values(GENRES)} />}
-                </div>
+                </div> */}
             </div>
         </section>
     )

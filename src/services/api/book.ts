@@ -8,9 +8,9 @@ export const createBook = async (bookData: FormData): Promise<BookType> => {
     return response.data
 }
 
-export const updateBook = async (bookData: any, listingId: string): Promise<BookType> => {
+export const updateBook = async (bookData: FormData, listingId: string): Promise<BookType> => {
 
-    const response = await ($api.put(`/book/${listingId}`, bookData))
+    const response = await ($api.put(`/book/${listingId}`, bookData, { headers: { 'Content-Type': "multipart/form-data" } }))
 
     return response.data
 }

@@ -1,4 +1,4 @@
-import { GENRES } from "../../../constants/book"
+import { GENRES } from "@/constants/enum/book"
 
 interface PropsType {
     genres: GENRES[]

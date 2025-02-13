@@ -1,6 +1,6 @@
 import useIsComponentVisibleOnHoverHook from "../../../hooks/useIsComponentVisibleOnHover"
 import Dropdown from "./Dropdown"
-import { GENRES } from '../../../constants/book'
+import { GENRES } from '../../../constants/enum/book'
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
@@ -25,7 +25,7 @@ const NavLink = ( {linkText, direction} : PropsType) => {
             <Link to={direction}>
                 <li
                     onMouseOver={() => dropDownContent.length > 0 && setIsComponentVisible(true)}
-                    className=" pb-4 px-1 border-b-2 border-transparent group-hover:border-indigo-900">
+                    className=" border-b-2 border-transparent group-hover:border-indigo-900">
                     {linkText}
                 </li>
             </Link>

@@ -11,6 +11,8 @@ const DashboardSideNav = () => {
     const linkActiveStyle = linkStyle +  "bg-blue-50 font-semibold rounded-xl"
     const linkNotActiveStyle = linkStyle + ""
 
+    
+
     return (
         <div className="flex flex-col justify-center gap-y-4 py-7 md:p-7">
             <NavLink

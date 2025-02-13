@@ -9,6 +9,7 @@ type cartContextType = {
     getItemQuantity: (itemId: string) => number
     clearCart: () => void
     getCartTotal: () => number
+    isLoading: boolean
 }
 
 export const cartcontext = createContext<cartContextType>({} as cartContextType)
@@ -38,11 +39,11 @@ export const CartContextProvider: FC<cartProviderProps> = ({ children }) => {
                 if (isItemInCart === -1)
                     tmpCart.push(newItem)
                 else
-                    tmpCart = cart.map(item => {
-                        if (item.product._id === newItem.product._id)
-                            item.quantity = newItem.quantity
-                        return item
-                    })
+                    tmpCart = cart.map(item => 
+                        item.product._id === newItem.product._id
+                        ? {...item, quantity: newItem.quantity}
+                        : item
+                    )
             }
             setCart(tmpCart)
             localStorage.setItem('cart', JSON.stringify(tmpCart))
@@ -59,6 +60,7 @@ export const CartContextProvider: FC<cartProviderProps> = ({ children }) => {
     }
 
     const clearCart = () => {
+        localStorage.removeItem('cart')
         setCart([])
     }
 
@@ -113,9 +115,16 @@ export const CartContextProvider: FC<cartProviderProps> = ({ children }) => {
 
     useEffect(() => {
         const fetchCart = async () => {
-            const mergedCart = await mergeLocalAndServerCart(await getCart())
-            localStorage.setItem('cart', JSON.stringify(mergedCart))
-            setCart(mergedCart)
+            setIsLoading(true)
+            try {
+                const mergedCart = await mergeLocalAndServerCart(await getCart())
+                localStorage.setItem('cart', JSON.stringify(mergedCart))
+                setCart(mergedCart)
+            } catch (error) {
+                console.log(error)
+            } finally {
+                setIsLoading(false)
+            }
         }
 
         if (user)
@@ -124,7 +133,7 @@ export const CartContextProvider: FC<cartProviderProps> = ({ children }) => {
             setCart(getCartFromLocalStorage())
     }, [user])
 
-    const value = useMemo(() => ({ cart, upsertCartItem, getItemQuantity, clearCart, getCartTotal }), [cart])
+    const value = useMemo(() => ({ cart, upsertCartItem, getItemQuantity, clearCart, getCartTotal, isLoading }), [cart])
 
     return (
         <cartcontext.Provider value={value}>

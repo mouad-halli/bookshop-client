@@ -1,4 +1,4 @@
-import FormInput from "../../components/UI/FormInput"
+import FormInput from "../../components/ui/FormInput"
 import useLogin from "./useLogin"
 import { AiOutlineLoading } from "react-icons/ai";
 
@@ -9,7 +9,7 @@ const Login = () => {
     } = useLogin()
 
     return (
-        <main className="min-h-[61dvh] flex justify-center items-center py-10">
+        <main className="min-h-[63dvh] flex justify-center items-center py-10 dark:bg-neutral-900 dark:text-neutral-50">
             <form className="font-primary w-[29rem] flex flex-col gap-y-6" onSubmit={handleSubmit(onSubmit)}>
                 <h1 className="font-secondary text-center text-5xl mb-5">Login</h1>
                 <FormInput

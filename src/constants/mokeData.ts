@@ -1,6 +1,6 @@
 import { BookType } from '../@Types/book';
 import { makeid } from '../utils/helpers';
-import { GENRES, LANGUAGES } from './book';
+import { GENRES } from './enum/book';
 export const booksMockData: BookType[] = [
     {
         _id: makeid(6),

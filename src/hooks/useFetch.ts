@@ -14,7 +14,7 @@ export const useFetch = <T,>(url: string, initialState: T) => {
             setData(fetchedData)
             setIsLoading(false)
         } catch (error) {
-            console.log(error)
+            // console.log(error)
             setError('failed to fetch data')
             setIsLoading(false)
         }

@@ -5,7 +5,7 @@ import { useFetch } from "../../hooks/useFetch";
 import { useContext, useEffect, useState } from "react";
 import { cartcontext } from "../../Contexts/cartContext";
 import { MdDeleteOutline } from "react-icons/md";
-import { Counter } from "../../components/UI/Counter";
+import { Counter } from "../../components/ui/Counter";
 
 const Product = () => {
 
@@ -14,22 +14,27 @@ const Product = () => {
     if (!productId)
         return
     
-    const { cart, upsertCartItem, getItemQuantity } = useContext(cartcontext)
+    const { cart, isLoading: isCartLoading, upsertCartItem, getItemQuantity } = useContext(cartcontext)
     const {data, error, isLoading } = useFetch<BookType>(`/book/${productId}`, {} as BookType)
     const [isDirty, setIsDirty] = useState(false)
     const [isInCart, setIsInCart] = useState(false)
     const [quantity, setQuantity] = useState(0)
+    const [initialQuantity, setInitialQuantity] = useState(0)
 
     const handleAddToCart = () => {
-        if (isDirty)
-            upsertCartItem({product: {...data}, quantity})
+        if (!isDirty)
+            return
+        upsertCartItem({product: {...data}, quantity})
         setIsInCart(quantity ? true : false)
         setIsDirty(false)
     }
 
     const handleRemoveFromCart = () => {
+        if (!isInCart)
+            return
         upsertCartItem({product: {...data}, quantity: 0})
         setQuantity(0)
+        setInitialQuantity(0)
         setIsInCart(false)
     }
 
@@ -41,14 +46,15 @@ const Product = () => {
     }
 
     useEffect(() => {
-        if (!isLoading) {
+        if (!isLoading && !isCartLoading) {
             const quantityInCart = getItemQuantity(data._id)
-            if (quantityInCart) {
-                setQuantity(quantityInCart)
-                setIsInCart(true)
-            }
+            setQuantity(quantityInCart)
+            setInitialQuantity(quantityInCart)
+            setIsInCart(quantityInCart ? true : false)
         }
-    }, [cart, isLoading])
+    }, [cart, isCartLoading, isLoading])
+
+    const isDisabled = (!quantity && !isInCart) || isLoading || !isDirty
 
     return (
         <main className="w-full px-3 2xl:px-24 py-10 pb-10">
@@ -96,22 +102,24 @@ const Product = () => {
                         </div> */}
                         <div className="w-28">
                             <Counter
-                                initCounter={quantity}
+                                initCounter={initialQuantity}
                                 maxCounter={data.stockCount}
                                 setIsDirty={setIsDirty}
+                                counter={quantity}
+                                setCounter={setQuantity}
                             />
                         </div>
                         <MdDeleteOutline
                             onClick={handleRemoveFromCart}
-                            className={`text-2xl cursor-pointer ${!quantity && 'opacity-40 cursor-not-allowed'}`}
+                            className={`text-2xl ${isInCart ? 'cursor-pointer' : 'opacity-40 cursor-not-allowed'}`}
                         />
                     </div>
                     <button
                         type="button"
-                        disabled={(!quantity && !isInCart) || isLoading}
+                        disabled={isDisabled}
                         onClick={handleAddToCart}
                         className={`font-accent w-full  max-w-96 mx-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4
-                        focus:outline-none rounded-lg px-8 py-3 text-center ${!quantity && !isInCart && 'opacity-40 cursor-not-allowed'}`}>
+                        focus:outline-none rounded-lg px-8 py-3 text-center ${isDisabled && 'opacity-40 cursor-not-allowed'}`}>
                         { isInCart ?
                             'Update Quantity' :
                             'Add to cart'

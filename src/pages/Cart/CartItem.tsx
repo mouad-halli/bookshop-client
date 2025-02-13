@@ -3,21 +3,16 @@ import { cartItemType } from "../../@Types/cart";
 import { ChangeEvent, FC, useState } from "react";
 import { Link } from "react-router-dom";
 import { FiMinus, FiPlus } from "react-icons/fi";
-import { Counter } from '../../components/UI/Counter';
+import { Counter } from '../../components/ui/Counter';
 
 interface PropsType {
     item: cartItemType
     upsertCartItem: (newItem: cartItemType) => void
-    setIsSideBarVisible?: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const CartItem: FC<PropsType> = ({ item, upsertCartItem, setIsSideBarVisible }) => {
-
-    if (!setIsSideBarVisible)
-        return null
+const CartItem: FC<PropsType> = ({ item, upsertCartItem }) => {
 
     const productImageMock = "https://booksondemand.ma/cdn/shop/products/8117HB7WbvL-min.jpg?v=1631701489&width=990"
-    const deleteButtonStyle = { color: "red", fontSize: "1.5em" }
 
     const [quantity, setQuantity] = useState(item.quantity)
     const [isDirty, setIsDirty] = useState(false)
@@ -36,8 +31,8 @@ const CartItem: FC<PropsType> = ({ item, upsertCartItem, setIsSideBarVisible }) 
     }
 
     return (
-        <div className="w-full flex border rounded bg-white shadow-sm p-3">
-            {item.product.imageUrl && <Link to={`/product/${item.product._id}`} onClick={() => setIsSideBarVisible(false)} >
+        <div className="w-full flex border rounded bg-white dark:bg-neutral-950 shadow-sm p-3">
+            {item.product.imageUrl && <Link to={`/product/${item.product._id}`} >
                 <img
                     className="h-32 w-22"
                     src={item.product.imageUrl}
@@ -48,7 +43,7 @@ const CartItem: FC<PropsType> = ({ item, upsertCartItem, setIsSideBarVisible }) 
                 <div className="">
                     <h1 className=" text-lg line-clamp-2 font-medium ">{item.product.title}</h1>
                     {/* <h1 className=" line-clamp-2">{item.product.author}</h1> */}
-                    <div className=" flex items-center gap-x-2 text-gray-700">
+                    <div className=" flex items-center gap-x-2 text-gray-700 dark:text-neutral-50">
                         <span className="">Price: </span>
                         <h1 className=" text-center line-clamp-2">${item.product.price}.00</h1>
                     </div>
@@ -68,17 +63,20 @@ const CartItem: FC<PropsType> = ({ item, upsertCartItem, setIsSideBarVisible }) 
                                 initCounter={item.quantity}
                                 maxCounter={item.product.stockCount}
                                 setIsDirty={setIsDirty}
+                                counter={quantity}
+                                setCounter={setQuantity}
                             />
                         </div>
                         {isDirty && <MdOutlineCheckBox
-                            className="text-blue-600 cursor-pointer"
-                            style={{...deleteButtonStyle, color: "#2563eb"}}
+                            className=" cursor-pointer"
+                            // style={{...deleteButtonStyle, color: "#2563eb"}}
+                            size={20}
                             onClick={handleCheckButtonClick}
                         />}
                     </div> 
                     <MdDeleteOutline
                         className="cursor-pointer"
-                        style={deleteButtonStyle}
+                        // style={deleteButtonStyle}
                         size={20}
                         onClick={() => upsertCartItem({...item, quantity: 0})}
                     />
