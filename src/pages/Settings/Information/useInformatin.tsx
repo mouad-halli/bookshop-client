@@ -13,7 +13,7 @@ const useInformation = () => {
 
     const { user, handleUpdateUser } = useContext(userContext)
 
-    const registerForm = <TSchema extends FieldValues>(schema: ZodSchema, mode: Mode, defaultValues: DefaultValues<TSchema> | undefined = undefined) => {
+    const registerForm = <TSchema extends FieldValues>(schema: ZodSchema, mode: Mode, _defaultValues: DefaultValues<TSchema> | undefined = undefined) => {
         return useForm<TSchema>({
             mode: mode,
             resolver: zodResolver(schema),

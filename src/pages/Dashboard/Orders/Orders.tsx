@@ -5,8 +5,8 @@ const Orders = () => {
 
     const {
         data,
-        isLoading,
-        error
+        // isLoading,
+        // error
     } = useOrders()
 
     console.table(data)

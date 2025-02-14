@@ -4,7 +4,7 @@ import FilterModal from '@/components/Filter/FilterModal/FilterModal';
 
 const SortSection = () => {
 
-    const [sortBy, setSortBy] = useState<string>("Relevence")
+    const [, setSortBy] = useState<string>("Relevence")
 
     return (
       <section className=" font-primary w-full flex justify-between md:justify-end items-center gap-x-4 py-4 text-sm">

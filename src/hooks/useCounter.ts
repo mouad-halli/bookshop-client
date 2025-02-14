@@ -1,5 +1,3 @@
-import { useState } from "react"
-
 export interface CounterProps {
     initCounter: number
     maxCounter: number

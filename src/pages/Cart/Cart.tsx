@@ -1,11 +1,9 @@
-import { GrClose } from "react-icons/gr";
 import { IoIosArrowBack } from "react-icons/io";
-import { VscLoading } from "react-icons/vsc";
 import { FC, useContext, useState } from "react";
 import CartItems from "./CartItems";
 import Checkout from "./Checkout";
 import { cartcontext } from "../../Contexts/cartContext";
-import { SheetClose, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import { SheetClose, SheetTitle } from "@/components/ui/sheet";
 import { SquareX } from "lucide-react";
 import { userAddress } from "@/@Types/user";
 import { useFetch } from "@/hooks/useFetch";
@@ -15,13 +13,13 @@ import { Link } from "react-router-dom";
 import { ToastAction } from "@/components/ui/toast";
 import { checkout } from "@/services/api/order";
 
-const Loading = () => {
-    return (
-        <div className="h-full w-full bg-slate-100 animate-pulse flex justify-center items-center">
-            <VscLoading size="30" className="mx-auto my-auto animate-spin" />
-        </div>
-    )
-}
+// const Loading = () => {
+//     return (
+//         <div className="h-full w-full bg-slate-100 animate-pulse flex justify-center items-center">
+//             <VscLoading size="30" className="mx-auto my-auto animate-spin" />
+//         </div>
+//     )
+// }
 
 interface PropsType {
 }
@@ -30,8 +28,8 @@ const Cart:FC<PropsType> = () => {
 
     const {
         data: address,
-        isLoading,
-        error
+        // isLoading,
+        // error
     } = useFetch<userAddress | null>(
         'user/address',
         null

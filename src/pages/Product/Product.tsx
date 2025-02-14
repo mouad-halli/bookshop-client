@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import { FiMinus, FiPlus } from "react-icons/fi";
 import { BookType } from "../../@Types/book";
 import { useFetch } from "../../hooks/useFetch";
 import { useContext, useEffect, useState } from "react";
@@ -15,7 +14,7 @@ const Product = () => {
         return
     
     const { cart, isLoading: isCartLoading, upsertCartItem, getItemQuantity } = useContext(cartcontext)
-    const {data, error, isLoading } = useFetch<BookType>(`/book/${productId}`, {} as BookType)
+    const {data, isLoading } = useFetch<BookType>(`/book/${productId}`, {} as BookType)
     const [isDirty, setIsDirty] = useState(false)
     const [isInCart, setIsInCart] = useState(false)
     const [quantity, setQuantity] = useState(0)
@@ -38,12 +37,12 @@ const Product = () => {
         setIsInCart(false)
     }
 
-    const handleChangeQuantity = (newQuantity: number) => {
-        if (newQuantity > data.stockCount)
-            newQuantity = data.stockCount
-        setQuantity(newQuantity)
-        setIsDirty(true)
-    }
+    // const handleChangeQuantity = (newQuantity: number) => {
+    //     if (newQuantity > data.stockCount)
+    //         newQuantity = data.stockCount
+    //     setQuantity(newQuantity)
+    //     setIsDirty(true)
+    // }
 
     useEffect(() => {
         if (!isLoading && !isCartLoading) {

@@ -1,8 +1,7 @@
 import { MdDeleteOutline, MdOutlineCheckBox  } from "react-icons/md";
 import { cartItemType } from "../../@Types/cart";
-import { ChangeEvent, FC, useState } from "react";
+import { FC, useState } from "react";
 import { Link } from "react-router-dom";
-import { FiMinus, FiPlus } from "react-icons/fi";
 import { Counter } from '../../components/ui/Counter';
 
 interface PropsType {
@@ -12,18 +11,18 @@ interface PropsType {
 
 const CartItem: FC<PropsType> = ({ item, upsertCartItem }) => {
 
-    const productImageMock = "https://booksondemand.ma/cdn/shop/products/8117HB7WbvL-min.jpg?v=1631701489&width=990"
+    // const productImageMock = "https://booksondemand.ma/cdn/shop/products/8117HB7WbvL-min.jpg?v=1631701489&width=990"
 
     const [quantity, setQuantity] = useState(item.quantity)
     const [isDirty, setIsDirty] = useState(false)
 
-    const handleQuantityChange = (newQuantity: number) => {
+    // const handleQuantityChange = (newQuantity: number) => {
 
-        if (newQuantity < item.product.stockCount && newQuantity !== quantity) {
-            setQuantity(newQuantity)
-            setIsDirty(newQuantity && newQuantity === item.quantity ? false : true)
-        }
-    }
+    //     if (newQuantity < item.product.stockCount && newQuantity !== quantity) {
+    //         setQuantity(newQuantity)
+    //         setIsDirty(newQuantity && newQuantity === item.quantity ? false : true)
+    //     }
+    // }
 
     const handleCheckButtonClick = () => {
         upsertCartItem({...item, quantity})

@@ -74,21 +74,21 @@ export const CartContextProvider: FC<cartProviderProps> = ({ children }) => {
         return cartAsJsonString ? JSON.parse(cartAsJsonString) : []
     }
 
-    const getCartFromServer = async (): Promise<cartItemType[]> => {
-        try {
-            // get cart from server and compare it with the one saved inside localStorage then return a merged result
-            const serverCart = (await getCart()).reduce((localItems, serverItem) => {
-                if (!localItems.some(localItem => localItem.product._id === serverItem.product._id))
-                    localItems.push(serverItem)
-                return localItems
-            }, getCartFromLocalStorage())
-            setIsLoading(false)
-            return serverCart
-        } catch (error) {
-            setIsLoading(false)
-            return []
-        }
-    }
+    // const getCartFromServer = async (): Promise<cartItemType[]> => {
+    //     try {
+    //         // get cart from server and compare it with the one saved inside localStorage then return a merged result
+    //         const serverCart = (await getCart()).reduce((localItems, serverItem) => {
+    //             if (!localItems.some(localItem => localItem.product._id === serverItem.product._id))
+    //                 localItems.push(serverItem)
+    //             return localItems
+    //         }, getCartFromLocalStorage())
+    //         setIsLoading(false)
+    //         return serverCart
+    //     } catch (error) {
+    //         setIsLoading(false)
+    //         return []
+    //     }
+    // }
 
     // const mergeLocalAndServerCart = (serverCart: cartItemType[]) => {
     //     return serverCart.reduce((localItems, serverItem) => {

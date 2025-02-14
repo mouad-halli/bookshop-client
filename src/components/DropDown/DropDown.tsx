@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { userContext } from "../../Contexts/userContext";
 import { logout } from "../../services/api/authentication";
 import {
@@ -14,10 +14,10 @@ import {
 
 import { CircleUser, LayoutDashboard, LogOut, Settings, User } from "lucide-react";
 
-interface PropsType {
-    isDropDownVisible: boolean
-    setIsDropDownVisible: React.Dispatch<React.SetStateAction<boolean>>
-}
+// interface PropsType {
+//     isDropDownVisible: boolean
+//     setIsDropDownVisible: React.Dispatch<React.SetStateAction<boolean>>
+// }
 
 // const DropDownMenu = ( {isDropDownVisible, setIsDropDownVisible}: PropsType) => {
 

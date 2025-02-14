@@ -19,7 +19,7 @@ type TAddressSchema = z.infer<typeof addressSchema>
 
 export const useAddress = () => {
 
-    const { handleSubmit, register, reset, setError, formState: { errors, isSubmitting, isDirty, isValid, dirtyFields } } = useForm<TAddressSchema>({
+    const { handleSubmit, register, reset, setError, formState: { errors, isSubmitting, isDirty, isValid, /*dirtyFields*/ } } = useForm<TAddressSchema>({
         resolver: zodResolver(addressSchema),
         mode: "onChange",
         // defaultValues: {

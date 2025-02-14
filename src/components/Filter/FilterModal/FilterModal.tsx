@@ -8,11 +8,12 @@ import { useState } from "react"
 const FilterModal = () => {
 
     const [value, setValue] = useState([0, 100])
-    const [genres, setGenres] = useState<string[]>([])
-    const [availability, setAvailability] = useState("In stock")
+    const [genres] = useState<string[]>([])
+    // const [availability, setAvailability] = useState("In stock")
     
     const handleAvailabilityChange = (availability: string) => {
-        setAvailability(availability)
+        availability = availability
+        // setAvailability(availability)
     }
 
     const handleValueChange = (newValue: number[]) => {
