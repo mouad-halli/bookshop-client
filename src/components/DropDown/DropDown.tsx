@@ -10,7 +10,7 @@ import {
     DropdownMenuLabel,
     DropdownMenuSeparator,
     DropdownMenuTrigger,
-  } from "@/components/ui/dropdown-menu"
+  } from "../../components/ui/dropdown-menu"
 
 import { CircleUser, LayoutDashboard, LogOut, Settings, User } from "lucide-react";
 

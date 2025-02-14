@@ -4,7 +4,7 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar"
+} from "../../../components/ui/sidebar"
 import DashboardSidebarContent from "./DashboardSidebarContent"
 import DashboardSidebarHeader from './DashboardSidebarHeader';
 import DashboardSidebarFooter from "./DashboardSidebarFooter";

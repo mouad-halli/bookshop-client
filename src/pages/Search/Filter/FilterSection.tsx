@@ -2,7 +2,7 @@ import { GENRES } from "@/constants/enum/book";
 import AvailabilityFilter from "./AvailabilityFilter";
 import PriceFilter from "./PriceFilter";
 import GenresFilter from "./GenresFilter";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger  } from "@/components/ui/accordion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger  } from "../../../components/ui/accordion";
 
 const FilterSection = () => {
 

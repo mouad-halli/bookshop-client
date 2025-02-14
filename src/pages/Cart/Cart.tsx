@@ -3,14 +3,14 @@ import { FC, useContext, useState } from "react";
 import CartItems from "./CartItems";
 import Checkout from "./Checkout";
 import { cartcontext } from "../../Contexts/cartContext";
-import { SheetClose, SheetTitle } from "@/components/ui/sheet";
+import { SheetClose, SheetTitle } from "../../components/ui/sheet";
 import { SquareX } from "lucide-react";
 import { userAddress } from "@/@Types/user";
 import { useFetch } from "@/hooks/useFetch";
 import { userContext } from "@/Contexts/userContext";
 import { useToast } from "@/hooks/use-toast";
 import { Link } from "react-router-dom";
-import { ToastAction } from "@/components/ui/toast";
+import { ToastAction } from "../../components/ui/toast";
 import { checkout } from "@/services/api/order";
 
 // const Loading = () => {

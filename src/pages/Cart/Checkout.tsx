@@ -2,7 +2,7 @@ import { HiPencil } from 'react-icons/hi'
 import { AiOutlineUser, AiOutlinePhone } from 'react-icons/ai'
 import { SiMaildotru } from 'react-icons/si'
 import { Link } from 'react-router-dom'
-import { DialogClose } from '@/components/ui/dialog'
+import { DialogClose } from '../../components/ui/dialog'
 import { FC } from 'react'
 import { userAddress, userType } from '@/@Types/user'
 
@@ -42,7 +42,7 @@ const Checkout: FC<PropsType> = ({
                     </div>
                     <div className='flex items-center text-sm'>
                         <AiOutlinePhone className=' w-8 text-lg text-blue-600' />
-                        <span>{"" ? "" : '--'}</span>
+                        <span>{true ? "" : '--'}</span>
                     </div>
                 </div>
             </div>

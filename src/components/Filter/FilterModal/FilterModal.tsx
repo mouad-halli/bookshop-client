@@ -1,8 +1,8 @@
-import { Button } from "@/components/ui/button"
-import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
-import { Label } from "@/components/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Slider } from "@/components/ui/slider"
+import { Button } from "../../../components/ui/button"
+import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "../../../components/ui/dialog"
+import { Label } from "../../../components/ui/label"
+import { RadioGroup, RadioGroupItem } from "../../../components/ui/radio-group"
+import { Slider } from "../../../components/ui/slider"
 import { useState } from "react"
 
 const FilterModal = () => {

@@ -2,11 +2,11 @@ import { Outlet } from 'react-router-dom'
 import DashboardSideNav from '../components/DashboardNav/DashboardSideNav'
 import DashboardTopNav from '../components/DashboardNav/DashboardTopNav'
 import DashboardFixedSideNav from '../components/DashboardNav/DashboardFixedSideNav'
-import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
+import { SidebarProvider, SidebarTrigger } from '../components/ui/sidebar'
 import DashboardSidebar from '@/components/Dashboard/DashboardSidebar/DashboardSidebar'
-import { Separator } from '@/components/ui/separator'
-import ThemeModeToggleDropdown from '@/components/ui/ThemeModeToggleDropdown'
-import { Toaster } from "@/components/ui/toaster"
+import { Separator } from '../components/ui/separator'
+import ThemeModeToggleDropdown from '../components/ui/ThemeModeToggleDropdown'
+import { Toaster } from "../components/ui/toaster"
 
 const DashboardLayout = () => {
 

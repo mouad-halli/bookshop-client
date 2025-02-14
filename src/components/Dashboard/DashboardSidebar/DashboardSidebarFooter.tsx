@@ -1,5 +1,5 @@
-import { DropdownMenu, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "@/components/ui/sidebar"
+import { DropdownMenu, DropdownMenuTrigger } from "../../../components/ui/dropdown-menu"
+import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from "../../../components/ui/sidebar"
 import { ChevronsUpDown } from "lucide-react"
 import DashboardSidebarDropDown from "./DashboardSidebarDropDown"
 import { useContext } from "react"

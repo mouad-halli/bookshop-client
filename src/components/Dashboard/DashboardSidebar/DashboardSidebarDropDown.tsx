@@ -1,5 +1,5 @@
-import { DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSeparator } from "@/components/ui/dropdown-menu"
-import { useSidebar } from "@/components/ui/sidebar"
+import { DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuSeparator } from "../../../components/ui/dropdown-menu"
+import { useSidebar } from "../../../components/ui/sidebar"
 import { userContext } from "@/Contexts/userContext"
 import { logout } from "@/services/api/authentication"
 import { House, LogOut, Settings } from "lucide-react"

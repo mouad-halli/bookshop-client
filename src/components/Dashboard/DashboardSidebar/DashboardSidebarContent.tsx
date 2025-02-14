@@ -2,7 +2,7 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
     SidebarMenu
-} from "@/components/ui/sidebar"
+} from "../../../components/ui/sidebar"
 import { Container, LayoutDashboard, Package } from "lucide-react"
 import { Link } from "react-router-dom"
 
