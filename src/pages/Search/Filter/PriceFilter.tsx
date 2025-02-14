@@ -16,14 +16,14 @@ const PriceFilter = () => {
 
     return (
         <div className=" p-2 flex gap-x-2 items-center">
-            <FormInput
+            {/* <FormInput
                 label="from" value={from} inputType="number"
                 handleValueChange={handleSetFromChange}
             />
             <FormInput
                 label="to" value={to} inputType="number"
                 handleValueChange={handleSetToChange}
-            />
+            /> */}
             <label>.$</label>
         </div>
     )

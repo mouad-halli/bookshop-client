@@ -48,7 +48,7 @@ const ListingItem = ({ book, deleteItem, updateItem }: Propstype) => {
                         className='ring-blue-500 text-blue-500'
                     />
                     <Modal modalTitle='Update Listing' isModalVisible={isModalVisible} onClose={() => setIsModalVisible(false)}>
-                        <ListingForm setIsModalVisible={setIsModalVisible} listing={book} updateItem={updateItem} />
+                        <ListingForm setIsOpen={setIsModalVisible} listing={book} updateItem={updateItem} />
                     </Modal>
 				</div>
 			</div>

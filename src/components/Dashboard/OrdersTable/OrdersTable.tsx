@@ -1,7 +1,7 @@
 import { ColumnDef } from "@tanstack/react-table"
 import DataTable from "../ui/DataTable"
 import { OrderItemType } from "@/@Types/orderItem"
-import { ArrowDownFromLine, ArrowRightFromLine, ArrowRightFromLineIcon } from "lucide-react"
+import { ArrowDownFromLine, ArrowRightFromLineIcon } from "lucide-react"
 
 interface columnsType extends Pick<OrderItemType, "_id" | "name" | "status" | "quantity" | "unitPrice"> {}
 
