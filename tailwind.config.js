@@ -8,9 +8,18 @@ export default {
   theme: {
   	extend: {
   		fontFamily: {
-  			primary: ['Source-Sans-3', 'sans-serif'],
-  			secondary: ['Poppins', 'sans-serif'],
-  			accent: ['Nunito', 'sans-serif']
+  			primary: [
+  				'Source-Sans-3',
+  				'sans-serif'
+  			],
+  			secondary: [
+  				'Poppins',
+  				'sans-serif'
+  			],
+  			accent: [
+  				'Nunito',
+  				'sans-serif'
+  			]
   		},
   		colors: {
   			'dark-green': '#1e3f48',
