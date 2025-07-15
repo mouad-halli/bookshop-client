@@ -4,9 +4,11 @@ import { userType } from "../@Types/user";
 import { getUser } from "../services/api/user";
 
 type userContextType = {
-    user: userType | null | undefined
+    // user: userType | null | undefined
     handleUpdateUser: (newUserData: userType) => void
     handleLogout: () => void
+    toggleUserSellerStatus: (isSeller: boolean) => void
+    getUserFromContext: () => userType | null | undefined
 }
 
 export const userContext = createContext<userContextType>({} as userContextType)
@@ -18,17 +20,41 @@ export const UserContextProvider: FC<userProviderProps> = ({ children }) => {
     const [user, setUser] = useState<userType | null | undefined>(undefined)
     const [isLoading, setIsLoading] = useState(false)
 
+    // const handleUpdateUser = (newUserData: userType) => {
+    //     if (newUserData.imgUrl)
+    //         newUserData.imgUrl += '?' + new Date().getTime()
+    //     setUser({...newUserData})
+    // }
+
     const handleUpdateUser = (newUserData: userType) => {
-        if (newUserData.imgUrl)
-            newUserData.imgUrl += '?' + new Date().getTime()
-        setUser({...newUserData})
+        const updatedUser = { ...newUserData }
+        if (updatedUser.imgUrl)
+            updatedUser.imgUrl += '?' + new Date().getTime()
+        setUser(updatedUser)
     }
+
+    const toggleUserSellerStatus = (isSeller: boolean) => {
+        if (user) {
+            const updatedUser = { ...user, isSeller }
+            setUser(updatedUser)
+        }
+    }
+
 
     const handleLogout = () => {
         setUser(null)
     }
 
-    const value = useMemo(() => ({user, handleUpdateUser, handleLogout}), [user])
+    const getUserFromContext = () => {
+        return user
+    }
+
+    const value = useMemo(() => ({
+        getUserFromContext,
+        handleUpdateUser,
+        handleLogout,
+        toggleUserSellerStatus
+    }), [user])
 
     useEffect(() => {
         const fetchUserData = async () => {

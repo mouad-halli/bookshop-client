@@ -51,7 +51,9 @@ const Navbar = () => {
                         <MobileNavbar />
                     </SideBar>
                     <DropDown />
-                    <ThemeModeToggleDropdown />
+                    <div className="hidden md:block">
+                        <ThemeModeToggleDropdown />
+                    </div>
                 </div>
             </div>
             <div className=" sm:hidden relative w-5/6 mx-auto ">

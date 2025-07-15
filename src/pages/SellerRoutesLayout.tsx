@@ -5,12 +5,12 @@ import { userContext } from "../Contexts/userContext"
 
 const SellerRoutesLayout = () => {
 
-    const { user } = useContext(userContext)
+    const { getUserFromContext } = useContext(userContext)
 
-    if ( user === undefined)
+    if ( getUserFromContext() === undefined)
         return null // I should change this with a Loading Screen
 
-    return (user !== null && user.isSeller) ? <Outlet /> : <Navigate to={'/login'} />
+    return (getUserFromContext() !== null && getUserFromContext()?.isSeller) ? <Outlet /> : <Navigate to={'/login'} />
 
 }
 

@@ -2,10 +2,12 @@ import { GENRES } from "@/constants/enum/book"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../ui/accordion"
 import { Link } from "react-router-dom"
 import { SheetClose } from "../ui/sheet"
+import ThemeModeToggleDropdown from "../ui/ThemeModeToggleDropdown"
 
 const MobileNavbar = () => {
     return (
         <div className=" font-secondary h-full w-full flex flex-col p-4 overflow-y-auto dark:text-neutral-50">
+            <ThemeModeToggleDropdown />
             <Accordion type="single" collapsible>
                 <div className="py-4 border-b font-medium">
                     <SheetClose asChild>
@@ -41,6 +43,11 @@ const MobileNavbar = () => {
                     </SheetClose>
                 </div>
             </Accordion>
+            <div className="flex-1"></div>
+            <div className="text-center text-sm text-neutral-500 dark:text-neutral-400">
+                <p>© 2025 BookShop. All rights reserved.</p>
+                <p>Powered by React and TypeScript</p>
+            </div>
         </div>
     )
 }

@@ -67,9 +67,9 @@ const DropDown = () => {
 
     const navigate = useNavigate()
 
-    const { user } = useContext(userContext)
+    const { getUserFromContext } = useContext(userContext)
 
-    if (user)
+    if (getUserFromContext())
         return (
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -89,7 +89,7 @@ const DropDown = () => {
                         </DropdownMenuItem>
                     </DropdownMenuGroup>
                     <DropdownMenuSeparator />
-                    { user.isSeller && 
+                    { getUserFromContext()?.isSeller && 
                         <DropdownMenuItem className="cursor-pointer" onClick={() => navigate("dashboard")}>
                             <LayoutDashboard  className="mr-2 size-4" />
                             Dashboard

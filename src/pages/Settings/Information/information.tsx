@@ -52,7 +52,7 @@ const Information: FC<PropsType> = ({ user }) => {
                     />
                     <button
                         type="submit" disabled={ !forms.information.formState.isDirty || forms.information.formState.isSubmitting}
-                        className="font-accent py-2.5 border md:w-min px-8 mt-4 border-indigo-600 text-indigo-700"
+                        className="font-accent py-2.5 border md:w-min px-8 mt-4 border-indigo-600 text-indigo-700 whitespace-nowrap"
                     >
                         {forms.information.formState.isSubmitting ? "saving ..." : "save"}
                     </button>

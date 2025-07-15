@@ -5,12 +5,12 @@ import { userContext } from "../Contexts/userContext"
 
 const NotAuthenticatedRoutesLayout = () => {
 
-    const {user} = useContext(userContext)
+    const {getUserFromContext} = useContext(userContext)
 
-    if (user === undefined)
+    if (getUserFromContext() === undefined)
         return null // will be updated with a Loading Screen
 
-    return user === null ? <Outlet /> : <Navigate to={'/'} />
+    return getUserFromContext() === null ? <Outlet /> : <Navigate to={'/'} />
 
 }
 

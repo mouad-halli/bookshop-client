@@ -58,9 +58,9 @@ const Address = () => {
                 </div>
                 <button
                     type="submit" disabled={ !isDirty || !isValid || isSubmitting}
-                    className="font-accent py-2.5 border md:w-min px-8 mt-4 border-indigo-600 text-indigo-700"
+                    className="font-accent py-2.5 border md:w-min px-8 mt-4 border-indigo-600 text-indigo-700 whitespace-nowrap"
                 >
-                    {isSubmitting ? 'Saving...' : 'Save'}
+                    {isSubmitting ? 'Saving ...' : 'Save'}
                 </button>
             </form>
         </div>   

@@ -46,13 +46,14 @@ interface ButtonProps {
     disabled?: boolean
 }
 
-export const PrevButton: FC<ButtonProps> = (props) => {
+export const PrevButton: FC<ButtonProps> = () => {
 
     return (
         <IoIosArrowForward
-            className={props.className + ' rotate-180 cursor-pointer'}
-            onClick={props.onClick}
-            disabled={props.disabled}
+            className="rotate-180 "
+            // className={props.className + ' rotate-180 cursor-pointer'}
+            // onClick={props.onClick}
+            // disabled={props.disabled}
             size={32}
         />
     )
@@ -62,8 +63,8 @@ export const NextButton: FC<ButtonProps>  = (props) => {
     return (
         <IoIosArrowForward
             className={props.className + ' cursor-pointer'}
-            onClick={props.onClick}
-            disabled={props.disabled}
+            // onClick={props.onClick}
+            // disabled={props.disabled}
             size={32}
         />
     )

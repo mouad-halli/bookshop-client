@@ -42,7 +42,7 @@ const Checkout: FC<PropsType> = ({
                     </div>
                     <div className='flex items-center text-sm'>
                         <AiOutlinePhone className=' w-8 text-lg text-blue-600' />
-                        <span>{"" ? "" : '--'}</span>
+                        <span>{true ? "" : '--'}</span>
                     </div>
                 </div>
             </div>

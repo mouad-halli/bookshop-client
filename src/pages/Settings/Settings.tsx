@@ -6,15 +6,16 @@ import { userContext } from "../../Contexts/userContext"
 
 const Settings = () => {
 
-    const { user, handleUpdateUser } = useContext(userContext)
-    const [isSeller, setIsSeller] = useState(user ? user.isSeller : false)
+    const { getUserFromContext, toggleUserSellerStatus } = useContext(userContext)
+    const [isSeller, setIsSeller] = useState(getUserFromContext()?.isSeller || false)
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault()
         try {
             await updateUserSellerStatus(isSeller)
-            if (user)
-                handleUpdateUser({...user, isSeller})
+            // if (user)
+            //     handleUpdateUser({...user, isSeller})
+            toggleUserSellerStatus(isSeller)
         } catch (error: unknown) {
             console.log(error)
         }
@@ -23,7 +24,7 @@ const Settings = () => {
     return (
         <main className="min-h-dvh py-10">
             <div className=" font-primary w-11/12 sm:w-10/12 grid md:grid-cols-2 xl:grid-cols-3 gap-10 mx-auto ">
-                <Information user={user} />
+                <Information user={getUserFromContext()} />
                 <Address />
                 <form className="" onSubmit={handleSubmit}>
                     <h1 className=" font-secondary text-xl font-semibold pb-4 pl-4">Settings</h1>
